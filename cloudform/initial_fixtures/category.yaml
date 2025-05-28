@@ -1,0 +1,19 @@
+- model: categorys.category
+  pk: 1
+  fields:
+    name: Default
+
+- model: categorys.category
+  pk: 2
+  fields:
+    name: Hardware
+
+- model: categorys.category
+  pk: 3
+  fields:
+    name: Software
+
+- model: categorys.category
+  pk: 4
+  fields:
+    name: Add-on Service

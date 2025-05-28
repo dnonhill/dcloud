@@ -1,0 +1,200 @@
+vm-id,vm-name,value/power_state,value/cpu_count,value/memory_size_MiB,DatacenterID,Project,JobCode,Aplication
+vm-1072,HQ-Alfred,POWERED_ON,4,16384,14,pttep_digital_assistant,901482000244,HQ-Alfred
+vm-856,Test-ALFREDDB,POWERED_ON,2,8192,14,pttep_digital_assistant,901482000244,Test-ALFREDDB
+vm-857,Test-Alfred,POWERED_ON,2,8192,14,pttep_digital_assistant,901482000244,Test-Alfred
+vm-1113,Dev-AlfredDB,POWERED_ON,2,8192,14,pttep_digital_assistant,901482000244,Dev-AlfredDB
+vm-1114,Dev-Alfred,POWERED_ON,2,8192,14,pttep_digital_assistant,901482000244,Dev-Alfred
+vm-1789,gcms-b1mm-d1,POWERED_ON,18,49152,11,SAP B1 PM Myanmar,901482000245,gcms-b1mm-d1
+vm-1876,gcms-b1mm-p1,POWERED_ON,24,65536,11,SAP B1 PM Myanmar,901482000245,gcms-b1mm-p1
+vm-1792,HQ-SecRFID,POWERED_ON,4,16376,11,sap_b1_pm_myanmar,901482000245,HQ-SecRFID
+vm-1880,iServicePRD,POWERED_ON,2,8192,11,sap_b1_pm_myanmar,901482000245,iServicePRD
+vm-1608,grp-adfsapp-1,POWERED_ON,2,4096,9,ADFS for App,901484000181,grp-adfsapp-1
+vm-1610,grp-adfsapppx-2,POWERED_ON,2,4096,9,ADFS for App,901484000181,grp-adfsapppx-2
+vm-1611,grp-adfsapp-2,POWERED_ON,2,4096,9,ADFS for App,901484000181,grp-adfsapp-2
+vm-1621,grp-adfsapppx-1,POWERED_ON,2,4096,9,ADFS for App,901484000181,grp-adfsapppx-1
+vm-4202,grp-jengit-t01,POWERED_ON,2,8192,9,aisensor,901485000688,grp-jengit-t01
+vm-4382,grp-bsafs-p01,POWERED_ON,2,8192,9,BSA Migrate File server P2V,901482000244,grp-bsafs-p01
+vm-6120,grp-bsasftp-p01,POWERED_ON,2,4096,9,bsa_transform_system_from_sap_to_humanica,901481002379,grp-bsasftp-p01
+vm-9895,grp-bsafs-p02,POWERED_ON,2,8192,9,BSA-File server rental 10TB,901482000244,grp-bsafs-p02
+vm-4200,grp-apsnifi-t01,POWERED_ON,2,8192,9,cloudera,901485000688,grp-apsnifi-t01
+vm-4319,cvms,POWERED_OFF,2,8192,9,cvms,901485000688,cvms
+vm-4371,grp-doctdb-p01,POWERED_ON,2,8192,9,Document tracking,901481002081,grp-doctdb-p01
+vm-3478,grp-dtimewb-p01,POWERED_ON,4,12288,9,DTime,901484000239,grp-dtimewb-p01
+vm-3480,grp-dtimedb-p01,POWERED_ON,4,8192,9,DTime,901484000239,grp-dtimedb-p01
+vm-1868,gpsc-gp-app-p01,POWERED_ON,2,8192,9,EmpPower,901481001488,gpsc-gp-app-p01
+vm-1869,gpsc-gp-dat-p01,POWERED_ON,2,8192,9,EmpPower,901481001488,gpsc-gp-dat-p01
+vm-3383,grp-dtweb-t01,POWERED_ON,2,8192,9,Enco Document Tracking,901481002081,grp-dtweb-t01
+vm-3385,grp-dtdb-t01,POWERED_ON,2,8192,9,Enco Document Tracking,901481002081,grp-dtdb-t01
+vm-1628,iServiceTest,POWERED_ON,2,8192,9,EnCo iService,901481001556,iServiceTest
+vm-25856,enco-ny-p01,POWERED_ON,4,8192,9,Encony Website,901482000244,enco-ny-p01
+vm-1301,grp-flsiem-p01,POWERED_OFF,4,16384,9,Forward log from SIEM,901484000188,grp-flsiem-p01
+vm-29305,pm-intranet-p01,POWERED_ON,4,8192,9,GCM Intranet,901482000244,pm-intranet-p01
+vm-4497,grp-gpscmim-p01,POWERED_ON,2,8192,9,GPSC Glow MIM Sync,555555555555,grp-gpscmim-p01
+vm-2580,grp-hermesms-p01,POWERED_ON,4,8192,9,Heremes CCTV and Streaming,901484000211,grp-hermesms-p01
+vm-2581,grp-hermesstm-p01,POWERED_ON,4,8192,9,Heremes CCTV and Streaming,901484000211,grp-hermesstm-p01
+vm-2582,grp-hermwsdoc-p01,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-hermwsdoc-p01
+vm-2583,grp-hermwsdoc-p02,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-hermwsdoc-p02
+vm-4174,grp-hmmnode-p01,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-hmmnode-p01
+vm-4175,grp-hmwnode-p01,POWERED_ON,24,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmwnode-p01
+vm-4176,grp-hmdb-p01,POWERED_ON,16,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmdb-p01
+vm-4178,grp-hmwnode-p02,POWERED_ON,24,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmwnode-p02
+vm-4180,grp-hmwnode-p03,POWERED_ON,24,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmwnode-p03
+vm-4182,grp-hmwnode-p04,POWERED_ON,24,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmwnode-p04
+vm-4184,grp-hmdb-p02,POWERED_ON,16,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmdb-p02
+vm-4186,grp-hmdb-p03,POWERED_ON,16,32768,9,Heremes CCTV and Streaming,901484000211,grp-hmdb-p03
+vm-4241,grp-hergw-p01,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-hergw-p01
+vm-4243,grp-herms-p02,POWERED_ON,8,24576,9,Heremes CCTV and Streaming,901484000211,grp-herms-p02
+vm-4249,grp-herstm-p01,POWERED_ON,4,8192,9,Heremes CCTV and Streaming,901484000211,grp-herstm-p01
+vm-4254,grp-herstm-p02,POWERED_ON,4,8192,9,Heremes CCTV and Streaming,901484000211,grp-herstm-p02
+vm-4257,grp-gaiakmt-p01,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-gaiakmt-p01
+vm-4261,grp-gwnode-p01,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-gwnode-p01
+vm-4263,grp-herstm-p03,POWERED_ON,4,8192,9,Heremes CCTV and Streaming,901484000211,grp-herstm-p03
+vm-4268,grp-gwnode-p02,POWERED_ON,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-gwnode-p02
+vm-4272,grp-herrgt-p01-broken,POWERED_OFF,8,16384,9,Heremes CCTV and Streaming,901484000211,grp-herrgt-p01-broken
+vm-4284,grp-gaiadb-p01,POWERED_ON,16,32768,9,Heremes CCTV and Streaming,901484000211,grp-gaiadb-p01
+vm-4323,grp-herms-p01,POWERED_ON,8,24576,9,Heremes CCTV and Streaming,901484000211,grp-herms-p01
+vm-4462,grp-herkmt-t01,POWERED_ON,4,8196,9,Heremes CCTV and Streaming,901484000211,grp-herkmt-t01
+vm-4464,grp-hwnode-t01,POWERED_ON,4,8196,9,Heremes CCTV and Streaming,901484000211,grp-hwnode-t01
+vm-6402,grp-hermstg-p01,POWERED_ON,8,24576,9,Heremes CCTV and Streaming,901484000211,grp-hermstg-p01
+vm-6404,grp-hermstg-p02,POWERED_ON,8,16384,9,heremes_cctv_and_streaming,901484000211,grp-hermstg-p02
+vm-6405,grp-hermstr-p01,POWERED_ON,4,8192,9,heremes_cctv_and_streaming,901484000211,grp-hermstr-p01
+vm-6406,grp-hermstr-p02,POWERED_ON,4,8192,9,heremes_cctv_and_streaming,901484000211,grp-hermstr-p02
+vm-6407,grp-hermstr-p03,POWERED_ON,4,8192,9,heremes_cctv_and_streaming,901484000211,grp-hermstr-p03
+vm-2032,grp-asset-t01,POWERED_ON,2,8192,9,IT Asset Management,901482000152,grp-asset-t01
+vm-2042,manual-created-test,POWERED_OFF,1,2048,9,Kronos Visitor management platform,901484000225,manual-created-test
+vm-6427,kvis-smswb-q01,POWERED_ON,4,8192,9,KVIS School Management System,901482000244,kvis-smswb-q01
+vm-6428,kvis-smsdb-q01,POWERED_ON,8,16384,9,KVIS School Management System,901482000244,kvis-smsdb-q01
+vm-6429,kvis-smswb-p01,POWERED_ON,8,32768,9,KVIS School Management System,901482000244,kvis-smswb-p01
+vm-6430,kvis-smsdb-p01,POWERED_ON,16,65536,9,KVIS School Management System,901482000244,kvis-smsdb-p01
+vm-6433,dcloud-vm-02,POWERED_ON,2,4096,9,KVIS School Management System,901482000244,dcloud-vm-02
+vm-1187,LMS,POWERED_ON,4,16384,9,LMS Leaning Management System,901482000202,LMS
+vm-20441,enco-mpy-p01,POWERED_ON,4,16384,9,MPY Server for Enco,901482000244,enco-mpy-p01
+vm-2087,GRP-DPGW-D01,POWERED_ON,4,8192,9,Multi Factors Authentication,901484000070,GRP-DPGW-D01
+vm-6775,grp-nessm-p01,POWERED_ON,4,16384,9,Nessus Scanner,901485000754,grp-nessm-p01
+vm-1093,GRP-ANWEB-P01,POWERED_ON,2,65536,9,pds_analytic_platform,901484000216,GRP-ANWEB-P01
+vm-1108,grp-etaxr-t02,POWERED_ON,2,8192,9,pds_analytic_platform,901484000216,grp-etaxr-t02
+vm-1172,GRP-ANCAS-P01,POWERED_ON,12,262144,9,pds_analytic_platform,901484000216,GRP-ANCAS-P01
+vm-1175,grp-etaxr-p01,POWERED_ON,2,8192,9,pds_analytic_platform,901484000216,grp-etaxr-p01
+vm-1449,grp-kafkagsp-t01,POWERED_ON,4,8192,9,pds_analytic_platform,901484000216,grp-kafkagsp-t01
+vm-1988,grp-dms-t01,POWERED_ON,1,4096,9,pds_analytic_platform,901484000216,grp-dms-t01
+vm-2040,grp-kronos-t01,POWERED_ON,8,32768,9,pds_analytic_platform,901484000216,grp-kronos-t01
+vm-6918,grp-hermwsgw-p01,POWERED_ON,8,16384,9,pot182259_ptt_digital_hermes,901484000211,grp-hermwsgw-p01
+vm-6920,grp-hermesdb-p01,POWERED_ON,8,16384,9,pot182259_ptt_digital_hermes,901484000211,grp-hermesdb-p01
+vm-2982,pds-ereapp-t01,POWERED_ON,2,8192,9,pot192090_digital_e_recruit,901484000223,pds-ereapp-t01
+vm-1604,GRP-MFADB-P,POWERED_ON,4,12288,9,pot999904_ifm_n_internal_use,901481001556,GRP-MFADB-P
+vm-1603,grp-sslcert-p01,POWERED_ON,2,4096,9,pot999904_ifm_n_internal_use,901484000070,grp-sslcert-p01
+vm-1615,GRP-DPGW-P,POWERED_ON,4,8192,9,pot999904_ifm_n_internal_use,901484000070,GRP-DPGW-P
+vm-1636,GRP-IAS-P01,POWERED_ON,2,8192,9,pot999904_ifm_n_internal_use,901484000070,GRP-IAS-P01
+vm-3316,grp-deeptst-t01,POWERED_ON,2,4096,9,pot999905_ifm_o_internal_use,555555555555,grp-deeptst-t01
+vm-6526,grp-pamhq-p01,POWERED_ON,2,32768,9,Privilege Access Management,901485000744,grp-pamhq-p01
+vm-1607,grp-chatbot-t01,POWERED_ON,4,16384,9,PTT DIGITAL 3456 Chatbot,901485000702,grp-chatbot-t01
+vm-2877,grp-wso2api-t01,POWERED_ON,4,8192,9,PTT Digital API Management,901485000540,grp-wso2api-t01
+vm-2479,pds-rndapp-p01,POWERED_ON,4,8192,9,PTT Digital D Ask,901484000175,pds-rndapp-p01
+vm-2480,pds-rnddb-p01,POWERED_ON,4,8192,9,PTT Digital D Ask,901484000175,pds-rnddb-p01
+vm-7448,grp-phone-p01,POWERED_ON,4,8192,9,PTT Group Phone Directory,901481002852,grp-phone-p01
+vm-7450,grp-phone-t01,POWERED_ON,4,8192,9,PTT Group Phone Directory,901481002852,grp-phone-t01
+vm-1676,grp-chatdb-p01,POWERED_ON,8,16384,9,ptt_digital_3456_chatbot,901485000702,grp-chatdb-p01
+vm-1677,grp-chatbot-p01,POWERED_ON,12,24576,9,ptt_digital_3456_chatbot,901485000702,grp-chatbot-p01
+vm-2170,ac-sap-qas,POWERED_ON,4,24576,9,PTTACSAPMigrationtoPrivateCloud,901481001979,ac-sap-qas
+vm-2272,ac-sap-app1,POWERED_ON,4,32768,9,PTTACSAPMigrationtoPrivateCloud,901481001979,ac-sap-app1
+vm-2273,ac-sap-app2,POWERED_ON,4,32768,9,PTTACSAPMigrationtoPrivateCloud,901481001979,ac-sap-app2
+vm-2330,ac-sap-prd,POWERED_ON,6,65536,9,PTTACSAPMigrationtoPrivateCloud,901481001979,ac-sap-prd
+vm-10410,aspenl-ptt,POWERED_ON,2,8192,9,PTTDG-Move PTTES VM to PTTDG cloud,555555555555,aspenl-ptt
+vm-10412,aspenl-lng,POWERED_ON,2,8192,9,PTTDG-Move PTTES VM to PTTDG cloud,555555555555,aspenl-lng
+vm-20951,PTTES-HO-PMSKM.pttgrp.corp,POWERED_ON,4,16384,9,PTTDG-Move PTTES VM to PTTDG cloud,555555555555,PTTES-HO-PMSKM.pttgrp.corp
+vm-23415,PTTES-HR,POWERED_ON,4,16384,9,PTTDG-Move PTTES VM to PTTDG cloud,555555555555,PTTES-HR
+vm-11893,grp-dcpdb-t01,POWERED_ON,4,8192,9,PTTDIGITAL  D Cap Plan,901484000227,grp-dcpdb-t01
+vm-3708,grp-dcpdb-t01_old,POWERED_OFF,4,8192,9,PTTDIGITAL  D Cap Plan,901484000227,grp-dcpdb-t01_old
+vm-4366,rm-pearltwb-t01,POWERED_ON,8,8192,9,PTTRM HQ POS Pearly Tea,901481002343,rm-pearltwb-t01
+vm-4367,rm-pearltdb-t01,POWERED_ON,16,16384,9,PTTRM HQ POS Pearly Tea,901481002343,rm-pearltdb-t01
+vm-4478,rm-pearltwb-p01,POWERED_ON,8,8192,9,pttrm_hq_pos_pearly_tea,901481002343,rm-pearltwb-p01
+vm-4479,rm-pearltdb-p01,POWERED_ON,16,16384,9,pttrm_hq_pos_pearly_tea,901481002343,rm-pearltdb-p01
+vm-4480,rm-pearltfs-p01,POWERED_ON,2,8192,9,pttrm_hq_pos_pearly_tea,901481002343,rm-pearltfs-p01
+vm-4481,rm-pearltsc-p01,POWERED_ON,8,20480,9,pttrm_hq_pos_pearly_tea,901481002343,rm-pearltsc-p01
+vm-3740,grp-rpaclnt-t05-1,POWERED_OFF,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t05-1
+vm-3744,grp-rpaclnt-t16,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t16
+vm-3764,grp-rpaclnt-t17,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t17
+vm-3766,grp-rpaclnt-t18,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t18
+vm-3780,grp-rpaclnt-t19,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t19
+vm-3782,grp-rpaclnt-t20,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t20
+vm-3785,grp-rpaclnt-t21,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t21
+vm-3789,grp-rpaclnt-t22,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t22
+vm-6283,grp-rpaclnt-t28,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t28
+vm-6285,grp-rpaclnt-t29,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t29
+vm-6287,grp-rpaclnt-t30,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t30
+vm-6289,grp-rpaclnt-t31,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t31
+vm-6291,grp-rpaclnt-t32,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t32
+vm-6293,grp-rpaclnt-t33,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t33
+vm-6295,grp-rpaclnt-t34,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t34
+vm-6299,grp-rpaclnt-t35,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t35
+vm-6342,grp-rpaclnt-t37,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t37
+vm-6344,grp-rpaclnt-t36,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t36
+vm-6723,grp-rpaclnt-t38,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t38
+vm-6733,grp-rpaclnt-t39,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t39
+vm-6736,grp-rpaclnt-t40,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t40
+vm-6737,grp-rpaclnt-t41,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t41
+vm-6738,grp-rpaclnt-t42,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t42
+vm-6739,grp-rpaclnt-t43,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t43
+vm-6769,grp-rpaclnt-t44,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t44
+vm-6770,grp-rpaclnt-t45,POWERED_ON,4,4096,9,RPA Develope Client,901485000699,grp-rpaclnt-t45
+vm-2142,grp-rpaclnt-t10,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t10
+vm-2143,grp-rpaclnt-t09,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t09
+vm-2144,grp-rpaclnt-t08,POWERED_OFF,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t08
+vm-3487,grp-rpaclnt-t11,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t11
+vm-3688,grp-rpaclnt-t13,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t13
+vm-3691,grp-rpaclnt-t14,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901481001604,grp-rpaclnt-t14
+vm-1803,grp-rpaclnt-t01,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t01
+vm-1804,grp-rpaclnt-t02,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t02
+vm-1805,grp-rpaclnt-t03,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t03
+vm-1806,grp-rpaclnt-t04,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t04
+vm-1807,grp-rpaclnt-t05-backup,POWERED_OFF,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t05-backup
+vm-1808,grp-rpadb-d01,POWERED_ON,4,16384,9,rpa_centre_of_excellence,901484000217,grp-rpadb-d01
+vm-1814,grp-rpaclnt-t06,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t06
+vm-1815,grp-rpaclnt-t07,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901484000217,grp-rpaclnt-t07
+vm-4081,grp-rpaclnt-t23,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901485000699,grp-rpaclnt-t23
+vm-4082,grp-rpaclnt-t24,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901485000699,grp-rpaclnt-t24
+vm-4083,grp-rpaclnt-t25,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901485000699,grp-rpaclnt-t25
+vm-4084,grp-rpaclnt-t26,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901485000699,grp-rpaclnt-t26
+vm-4161,grp-rpaclnt-t27,POWERED_ON,4,4096,9,rpa_centre_of_excellence,901485000699,grp-rpaclnt-t27
+vm-3342,grp-rpafile-t01,POWERED_ON,2,4096,9,rpa_quick_win_for_p2p,901481001604,grp-rpafile-t01
+vm-6776,TSCM,POWERED_ON,8,16384,9,Security Center,901485000754,TSCM
+vm-1816,na-niki-t01,POWERED_ON,1,4096,9,test_project,901484000181,na-niki-t01
+vm-4205,vistec-bot-t01,POWERED_ON,4,8192,9,VISTEC Robotics Team,901402000022,vistec-bot-t01
+vm-955,grp-dsp-p01,POWERED_ON,2,4096,9,nocharge,901484000053,grp-dsp-p01
+vm-962,grp-dsm-p01,POWERED_ON,2,8192,9,nocharge,901484000053,grp-dsm-p01
+vm-963,grp-dsdb-p01,POWERED_ON,4,16384,9,nocharge,901484000053,grp-dsdb-p01
+vm-2181,ptt-isensor-t01,POWERED_OFF,4,16384,12,AiSensor,901480000257,ptt-isensor-t01
+vm-2248,ptt-wso2ean-p01,POWERED_ON,4,8192,12,api_management,901485000540,ptt-wso2ean-p01
+vm-1134,ptt-ctrmweb-p01,POWERED_ON,16,65536,12,BILLCTRM,901482000244,ptt-ctrmweb-p01
+vm-1135,ptt-ctrmrep-p01,POWERED_ON,8,65536,12,BILLCTRM,901482000244,ptt-ctrmrep-p01
+vm-1136,grp-vdbench-p01,POWERED_ON,8,12288,12,BILLCTRM,901482000244,grp-vdbench-p01
+vm-1314,CTRM-Regression,POWERED_ON,4,16384,12,BILLCTRM,901482000244,CTRM-Regression
+vm-1862,ict-ctrmweb-d01,POWERED_ON,16,32768,12,BILLCTRM,901482000244,ict-ctrmweb-d01
+vm-1865,HQ-SecMStone2,POWERED_ON,4,16384,12,BILLCTRM,901482000244,HQ-SecMStone2
+vm-1872,ict-ctrmweb-t01,POWERED_ON,24,32768,12,BILLCTRM,901482000244,ict-ctrmweb-t01
+vm-1881,ptt-ctrmdb-t02,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ptt-ctrmdb-t02
+vm-1882,ptt-ctrmda-t01,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ptt-ctrmda-t01
+vm-1883,ptt-ctrmrep-t01,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ptt-ctrmrep-t01
+vm-1888,grp-cctv-p01,POWERED_ON,8,32768,12,BILLCTRM,901482000244,grp-cctv-p01
+vm-1903,ptt-ctrm-t02,POWERED_ON,4,16384,12,BILLCTRM,901482000244,ptt-ctrm-t02
+vm-1945,ptt-ctrm-t01,POWERED_ON,1,4096,12,BILLCTRM,901482000244,ptt-ctrm-t01
+vm-1947,ptt-ctrmdb-t01,POWERED_ON,1,4096,12,BILLCTRM,901482000244,ptt-ctrmdb-t01
+vm-1965,ict-ctrmdb-t01,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ict-ctrmdb-t01
+vm-1966,ptt-ctrmrep-t02,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ptt-ctrmrep-t02
+vm-1967,ptt-ctrmda-t02,POWERED_ON,4,32768,12,BILLCTRM,901482000244,ptt-ctrmda-t02
+vm-1968,ptt-ctrmreg-t01,POWERED_ON,4,16384,12,BILLCTRM,901482000244,ptt-ctrmreg-t01
+vm-1969,ptt-ctrmdbe-t01,POWERED_ON,4,4096,12,BILLCTRM,901482000244,ptt-ctrmdbe-t01
+vm-1970,ptt-ctrmweb-t01,POWERED_ON,4,4096,12,BILLCTRM,901482000244,ptt-ctrmweb-t01
+vm-3473,ptt-ctrmdbe-p01,POWERED_ON,4,4096,12,BILLCTRM,901482000244,ptt-ctrmdbe-p01
+vm-3474,Test-EXPATWEB,POWERED_ON,4,8192,12,BILLCTRM,901482000244,Test-EXPATWEB
+vm-3767,ptt-ctrmda-p01,POWERED_ON,8,65536,12,BILLCTRM,901482000244,ptt-ctrmda-p01
+vm-3768,ptt-ctrmdbr-p01,POWERED_ON,8,65536,12,BILLCTRM,901482000244,ptt-ctrmdbr-p01
+vm-6784,ptt-ctrmdb-t03,POWERED_ON,24,262144,12,BILLCTRM,901482000244,ptt-ctrmdb-t03
+vm-6786,ptt-ctrmda-t03,POWERED_ON,8,65536,12,BILLCTRM,901482000244,ptt-ctrmda-t03
+vm-947,ptt-ctrmdb-p01,POWERED_ON,24,262144,12,BILLCTRM,901482000244,ptt-ctrmdb-p01
+vm-3472,ptt-ctrmweb-p02,POWERED_ON,4,4096,12,BILLCTRMTEST,901481003015,ptt-ctrmweb-p02
+vm-6785,ptt-ctrmdbr-t01,POWERED_ON,8,65536,12,BILLCTRMTEST,901481003015,ptt-ctrmdbr-t01
+vm-6787,ptt-ctrmweb-t02,POWERED_ON,16,65536,12,BILLCTRMTEST,901481003015,ptt-ctrmweb-t02
+vm-66448,OR-WSO2API-P01,POWERED_ON,2,8192,12,BUILD-API Management,901484000236,OR-WSO2API-P01
+vm-7612,OR-WSO2ESB-P01,POWERED_ON,2,8192,12,BUILD-API Management,901484000236,OR-WSO2ESB-P01
+vm-7614,OR-WSO2ANA-P01,POWERED_ON,2,8192,12,BUILD-API Management,901484000236,OR-WSO2ANA-P01

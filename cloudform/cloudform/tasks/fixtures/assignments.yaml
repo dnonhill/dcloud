@@ -1,0 +1,212 @@
+- model: projects.datacenter
+  pk: 1
+  fields:
+    name: "PTT"
+    default_job_code: "000000000000"
+    tenant: "ptt"
+    available_resources: '["vm", "other"]'
+
+- model: projects.Resource
+  pk: 1
+  fields:
+    application: 1
+    name: "resource 001"
+    resource_type: "vm"
+    details:
+        cpu: 4
+        memory: 16
+    data_center_id: 1
+    created_at: "2013-03-18T13:19:37+00:00"
+    updated_at: "2013-03-18T13:19:37+00:00"
+- model: projects.Resource
+  pk: 2
+  fields:
+    application: 1
+    name: "resource 002"
+    resource_type: "container-cluster"
+    details:
+        cpu: 2
+        memory: 8
+    data_center_id: 1
+    created_at: "2013-03-18T13:19:37+00:00"
+    updated_at: "2013-03-18T13:19:37+00:00"
+
+- model: tickets.ticket
+  pk: 11
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    application: 1
+    ticket_no: request 001
+    status: "assigned"
+    data_center_id: 1
+- model: tickets.ticketitem
+  pk: 11
+  fields:
+    ticket_id: 11
+    resource_type: vm
+    resource_id: 1
+    specification: 
+      name: "test vm"
+      vm_model: "1/2"
+      disk: 32
+      network_zone: "application"
+    action: "create"
+
+- model: tickets.ticket
+  pk: 12
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    application: 1
+    ticket_no: request 002
+    status: "assigned"
+- model: tickets.ticketitem
+  pk: 12
+  fields:
+    ticket_id: 12
+    resource_type: vm
+    specification: 
+      resource_name: "test vm"
+      cpu: 6
+      disk: 32
+      network_zone: "application"
+    
+
+- model: tickets.ticket
+  pk: 13
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    application: 1
+    ticket_no: reqeust 003
+    status: "assigned"
+- model: tickets.ticketitem
+  pk: 13
+  fields:
+    ticket_id: 13
+    resource_type: vm
+    resource: 1
+    action: "update"
+    specification:
+      cpu: 6
+      disk: 32
+      network_zone: "application"
+
+- model: tickets.ticket
+  pk: 14
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    application: 1
+    ticket_no: reqeust 003
+    status: "assigned"
+- model: tickets.ticketitem
+  pk: 14
+  fields:
+    ticket_id: 14
+    resource_type: vm
+    resource: 1
+    action: "update"
+    specification:
+      cpu: 6
+      disk: 32
+      network_zone: "application"
+
+- model: tickets.ticket
+  pk: 15
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    application: 1
+    ticket_no: "reqeust 004"
+    status: "assigned"
+- model: tickets.ticketitem
+  pk: 15
+  fields:
+    ticket_id: 15
+    resource_type: "container-cluster"
+    resource: 2
+    action: "create"
+    specification:
+      cpu: 16
+      memory: 32
+      members: ["requester 004"]
+      namespace: "openshift"
+      main_storage: 1024
+
+- model: tasks.assignment
+  pk: 1
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    ticket: 11
+    assignee: 1002
+    assigner: 1000
+- model: tasks.taskgroup
+  pk: 1
+  fields:
+    ticket_item_id: 11
+    complete: false
+
+- model: tasks.assignment
+  pk: 2
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: false
+    ticket: 13
+    assignee: 2002
+    assigner: 1000
+- model: tasks.taskgroup
+  pk: 2
+  fields:
+    ticket_item_id: 13
+    complete: false
+
+- model: tasks.assignment
+  pk: 3
+  fields:
+    created_by: 1
+    updated_by: 1
+    created_at: 2019-08-06 03:06:33.560477+00:00
+    updated_at: 2019-08-06 03:06:33.584034+00:00
+    active_flag: true
+    ticket: 15
+    assignee: 1002
+    assigner: 1000
+- model: tasks.taskgroup
+  pk: 3
+  fields:
+    ticket_item_id: 15
+    complete: false
+
+- model: django_celery_beat.crontabschedule
+  pk: 1
+  fields:
+    minute: "0"
+    hour: "*"
+    day_of_week: "*"
+    day_of_month: "*"
+    month_of_year: "*"
+    timezone: UTC

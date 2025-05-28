@@ -1,0 +1,287 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 2
+
+collectstatic:
+  image:
+    repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+    tag: production-v0.0.4
+    pullPolicy: Always
+  volumeMounts:
+    - name: dcloud-prd-app-static-volume
+      mountPath: /code/static/
+  volumes:
+    - name: dcloud-prd-app-static-volume
+      persistentVolumeClaim:
+        claimName: dcloud-prd-app-static-volume-storage
+  env:
+    - name: POSTGRES_DB
+      value: dcloud
+    - name: POSTGRES_USER
+      value: dcloudadmin
+    - name: POSTGRES_HOST
+      value: 10.224.65.107
+    - name: TZ
+      value: "Asia/Bangkok"
+  envFrom:
+    - secret:
+        name: dcloud-psql
+  resources:
+    requests:
+      cpu: 100m
+      memory: 50Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+  tag: production-v0.0.4
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-prd-app
+fullnameOverride: dcloud-prd-app
+
+env:
+  - name: DCLOUD_VERSION
+    value: "undefined"
+  - name: DCLOUD_GIT_HASH
+    value: "undefined"
+  - name: DCLOUD_DEPLOY_DATE
+    value: "undefined"
+  - name: AWX_API_HOST
+    value: "https://dcloudawx.pttdigital.com"
+  - name: POSTGRES_DB
+    value: dcloud
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: 10.224.65.107
+  - name: DCLOUD_FORCE_SECURE_REQUEST
+    value: true
+  - name: EMAIL_ENABLED
+    value: true
+  - name: EMAIL_BACKEND
+    value: "smtp"
+  - name: EMAIL_HOST
+    value: "app2smtp.pttgrp.corp"
+  - name: EMAIL_PORT
+    value: "25"
+  - name: EMAIL_HOST_USER
+    value: ""
+  - name: EMAIL_HOST_PASSWORD
+    value: ""
+  - name: SENDMAIL_SENDER
+    value: pttdigital-cloudadmin@pttdigital.com
+  - name: REDIS_ENABLED
+    value: true
+  - name: REDIS_HOSTS
+    value: "dcloud-production-app-redis-master"
+  - name: GRAYLOG_HOST
+    value: "dcloudgraylog.pttdigital.com"
+  - name: GRAYLOG_HANDLER_CLASS
+    value: "graypy.handler.GELFTCPHandler"
+  - name: ELASTICSEARCH_HOST
+    value: "dcloud-prd-elasticsearch"
+  - name: ELASTICSEARCH_PORT
+    value: "9200"
+  - name: VCENTER_URL
+    value: "https://grp-cfvc-p01.pttgrp.corp"
+  - name: TZ
+    value: "Asia/Bangkok"
+  - name: API_URL
+    value: "http://dcloud-prd-app:8000"
+
+envFrom:
+  - secret:
+      name: dcloud-psql
+  - secret:
+      name: dcloud-prd-awx-automation
+  - secret:
+      name: dcloud-secret-key
+  - secret:
+      name: dcloud-celery
+
+volumeMounts:
+  - name: dcloud-prd-app-media-volume
+    mountPath: /code/media
+  - name: dcloud-prd-app-static-volume
+    mountPath: /code/static
+
+# Make sure to create pvc on destination first
+volumes:
+  - name: dcloud-prd-app-media-volume
+    persistentVolumeClaim:
+      claimName: dcloud-prd-app-media-volume-storage
+  - name: dcloud-prd-app-static-volume
+    persistentVolumeClaim:
+      claimName: dcloud-prd-app-static-volume-storage
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 1
+    memory: 2Gi
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 8000
+      internalPort: 8000
+
+route:
+  enabled: true
+  routes:
+    - name: dcloud-prd-websocket-route
+      spec:
+        host: dcloud.pttdigital.com
+        path: /ws
+        to:
+          kind: Service
+          name: dcloud-prd-app
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+        # tls:
+        #   termination: edge
+        #   certificate: "CHANGEME"
+        #   key: |
+        #     CHANGEME
+        #   caCertificate: |
+        #     CHANGEME
+        #   insecureEdgeTerminationPolicy: Redirect
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+
+# sidecarContainers:
+#   - name: sendmail
+#     image:
+#       repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+#       tag: production-v0.0.4
+#       pullPolicy: IfNotPresent
+#     command:
+#       - /code/scripts/sendmail.sh
+#     env:
+#     - name: POSTGRES_DB
+#       value: dcloud
+#     - name: POSTGRES_USER
+#       value: dcloudadmin
+#     - name: POSTGRES_HOST
+#       value: 10.224.65.107
+#     - name: LISTEN_PORT
+#       value: 8001
+#     - name: EMAIL_ENABLED
+#       value: true
+#     - name: EMAIL_BACKEND
+#       value: "smtp"
+#     - name: EMAIL_HOST
+#       value: "app2smtp.pttgrp.corp"
+#     - name: EMAIL_PORT
+#       value: "25"
+#     - name: EMAIL_HOST_USER
+#       value: ""
+#     - name: EMAIL_HOST_PASSWORD
+#       value: ""
+#     - name: SENDMAIL_SENDER
+#       value: pttdigital-cloudadmin@pttdigital.com
+#     - name: PYTHONUNBUFFERED
+#       value: "yes"
+#     - name: SENDMAIL_DAEMON
+#       value: "yes"
+#     - name: TZ
+#       value: 'Asia/Bangkok'
+#     envFrom:
+#       - secret:
+#           name: dcloud-psql
+#     containerPorts:
+#       - 8001
+#     resources:
+#       requests:
+#         cpu: 100m
+#         memory: 50Mi
+#       limits:
+#         cpu: 100m
+#         memory: 500Mi
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+
+# Chart values https://github.com/helm/charts/blob/master/stable/redis/values.yaml
+redis:
+  enabled: true
+  auth:
+    enabled: false
+    sentinel: false
+  serviceAccount:
+    create: false
+    name: dcloud
+  sentinel:
+    enabled: false
+  master:
+    serviceAccount:
+      create: false
+      name: dcloud
+    persistence:
+      enabled: false
+      size: 8Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  architecture: standalone

@@ -1,0 +1,200 @@
+vm-id,vm-name,value/power_state,value/cpu_count,value/memory_size_MiB,DatacenterID,Project,JobCode,Aplication
+vm-1259,gpsc-gp-app-t01,POWERED_ON,2,8192,7,G Project,901481001488,gpsc-gp-app-t01
+vm-1260,gpsc-gp-dat-t01,POWERED_ON,2,8192,7,g_project,901481001488,gpsc-gp-dat-t01
+vm-2912,gpsc-ams3-p01,POWERED_OFF,2,8192,7,GPSC Asset Management System,901481001488,gpsc-ams3-p01
+vm-1127,gpsc-printfollowme-cost-p01,POWERED_ON,2,8192,7,GPSC PrintFollowMe Project PDC,901482000175,gpsc-printfollowme-cost-p01
+vm-1128,gpsc-printfollowme-monitor-p02,POWERED_ON,2,8192,7,GPSC PrintFollowMe Project PDC,901482000175,gpsc-printfollowme-monitor-p02
+vm-16085,gpsc-rpa-p01,POWERED_ON,2,8192,7,GPSC RPA Robotic Project,901482000111,gpsc-rpa-p01
+vm-4104,gpsc-bi-t01,POWERED_ON,8,16384,7,GPSC Workforce Planning BI,901481002463,gpsc-bi-t01
+vm-4128,Test-IPAM,POWERED_ON,8,16384,7,GPSC Workforce Planning BI,901481002463,Test-IPAM
+vm-4584,gpsc-bi-p01,POWERED_ON,8,16384,7,GPSC Workforce Planning BI,901481002463,gpsc-bi-p01
+vm-3193,gpsc-amdwowza01,POWERED_ON,4,16384,7,gpsc_asset_management_system,901482000244,gpsc-amdwowza01
+vm-3194,gpsc-amdapp01,POWERED_ON,4,16384,7,gpsc_asset_management_system,901482000244,gpsc-amdapp01
+vm-3197,gpsc-amddb01,POWERED_ON,2,8192,7,gpsc_asset_management_system,901482000244,gpsc-amddb01
+vm-4103,gpsc-etl-t01,POWERED_ON,8,16384,7,gpsc_workforce_planning_bi,901481002463,gpsc-etl-t01
+vm-4122,gpsc-dl-t01,POWERED_ON,8,16384,7,gpsc_workforce_planning_bi,901481002463,gpsc-dl-t01
+vm-4583,gpsc-etl-p01,POWERED_ON,8,16384,7,gpsc_workforce_planning_bi,901481002463,gpsc-etl-p01
+vm-4585,gpsc-bi-p02,POWERED_ON,8,32768,7,gpsc_workforce_planning_bi,901481002463,gpsc-bi-p02
+vm-4586,gpsc-bi-p03,POWERED_ON,8,32768,7,gpsc_workforce_planning_bi,901481002463,gpsc-bi-p03
+vm-4587,gpsc-dl-p01,POWERED_ON,8,16384,7,gpsc_workforce_planning_bi,901481002463,gpsc-dl-p01
+vm-26013,VM-E-PERMIT_merged,POWERED_ON,1,512,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,VM-E-PERMIT_merged
+vm-7435,pds-ehbook-p01,POWERED_ON,4,8192,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,pds-ehbook-p01
+vm-7439,gpsc-ryarc-p01,POWERED_ON,4,4096,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,gpsc-ryarc-p01
+vm-7452,gpsc-db-p01,POWERED_ON,8,8192,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,gpsc-db-p01
+vm-7454,gpsc-web-p02,POWERED_ON,8,8192,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,gpsc-web-p02
+vm-7591,UT-PAYSLIP-S01,POWERED_ON,4,8192,7,Move Production Server to PTT Digital Cloud Wave 3,901482000111,UT-PAYSLIP-S01
+vm-23409,gpsc-erecdb-p01,POWERED_ON,2,8192,7,pjr_gpsc_develope_recruitment_gpsc,901481002623,gpsc-erecdb-p01
+vm-23410,gpsc-erecap-p01,POWERED_ON,2,8192,7,pjr_gpsc_develope_recruitment_gpsc,901481002623,gpsc-erecap-p01
+vm-6628,gpsc-erecdb-t01,POWERED_ON,2,8192,7,pjr_gpsc_develope_recruitment_gpsc,901481002623,gpsc-erecdb-t01
+vm-6632,gpsc-erecap-t01,POWERED_ON,2,8192,7,pjr_gpsc_develope_recruitment_gpsc,901481002623,gpsc-erecap-t01
+vm-3697,HQ-AM1,POWERED_ON,2,8192,6,56789011-PTTDIGITAL,901450000007,HQ-AM1
+vm-3974,Test-UDT,POWERED_OFF,8,16384,6,56789011-PTTDIGITAL,901450000007,Test-UDT
+vm-404,pds-billing-01,POWERED_OFF,2,8192,6,99999999-Billing-Testing,555555555555,pds-billing-01
+vm-1818,pds-axway-d01,POWERED_ON,2,16384,6,API Management,901485000540,pds-axway-d01
+vm-2454,pds-wso2esb-p01,POWERED_ON,4,8192,6,api_management,901481000020,pds-wso2esb-p01
+vm-2249,grp-wsoeia-t01,POWERED_ON,4,8192,6,api_management,901485000540,grp-wsoeia-t01
+vm-2452,pds-wso2app-p01,POWERED_ON,4,8192,6,api_management,901485000540,pds-wso2app-p01
+vm-2453,pds-wso2ana-p01,POWERED_ON,4,8192,6,api_management,901485000540,pds-wso2ana-p01
+vm-2455,pds-wso2ean-p01,POWERED_ON,4,8192,6,api_management,901485000540,pds-wso2ean-p01
+vm-1901,pds-wso2app-t01,POWERED_ON,3,8192,6,api_management,901485000540,pds-wso2app-t01
+vm-1902,grp-wsoapia-t01,POWERED_ON,4,8192,6,api_management,901485000540,grp-wsoapia-t01
+vm-4414,pds-opexwb-t01,POWERED_ON,4,8192,6,asset_digital_opex,901484000227,pds-opexwb-t01
+vm-4415,pds-opexdb-t01,POWERED_ON,2,8192,6,asset_digital_opex,901484000227,pds-opexdb-t01
+vm-4416,HQ-ExpatW,POWERED_ON,4,16384,6,asset_digital_opex,901484000227,HQ-ExpatW
+vm-4476,pds-opexdb-p01,POWERED_ON,2,8192,6,asset_digital_opex,901484000227,pds-opexdb-p01
+vm-4477,pds-opexwb-p01,POWERED_ON,2,8192,6,asset_digital_opex,901484000227,pds-opexwb-p01
+vm-7623,pds-5mweb-t01,POWERED_ON,8,8192,6,ASSET-DIGITAL OPEX,901484000227,pds-5mweb-t01
+vm-7624,pds-5mdb-t01,POWERED_ON,8,8192,6,ASSET-DIGITAL OPEX,901484000227,pds-5mdb-t01
+vm-7625,pds-5mdb-p01,POWERED_ON,8,8192,6,ASSET-DIGITAL OPEX,901484000227,pds-5mdb-p01
+vm-7626,pds-5mweb-p01,POWERED_ON,8,8192,6,ASSET-DIGITAL OPEX,901484000227,pds-5mweb-p01
+vm-7627,TBKC-DAPPS-06,POWERED_ON,4,8192,6,ASSET-DIGITAL OPEX,901484000227,TBKC-DAPPS-06
+vm-2117,pds-blockc-p01,POWERED_ON,4,16384,6,Blockchain,901482000111,pds-blockc-p01
+vm-1138,pds-price-t01,POWERED_OFF,2,4096,6,Cloud Check Price,901485000591,pds-price-t01
+vm-1920,pds-cloudsvc-p1,POWERED_ON,2,4096,6,Cloud Services Server,555555555555,pds-cloudsvc-p1
+vm-2970,pds-dessweb-t01,POWERED_ON,2,8192,6,D ESS,901484000241,pds-dessweb-t01
+vm-2971,pds-dessdb-t01,POWERED_ON,2,8192,6,D ESS,901484000241,pds-dessdb-t01
+vm-1430,pds-dxc-dat-p01,POWERED_ON,2,8192,6,d_claim,901484000209,pds-dxc-dat-p01
+vm-1431,pds-dxc-app-p01,POWERED_ON,2,16384,6,d_claim,901484000209,pds-dxc-app-p01
+vm-3205,pds-dhpydb-p01,POWERED_ON,2,8192,6,d_happy,901484000242,pds-dhpydb-p01
+vm-3206,pds-dhpyweb-p01,POWERED_ON,2,8192,6,d_happy,901484000242,pds-dhpyweb-p01
+vm-1048,pds-digital-d-meeting-fte-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000189,pds-digital-d-meeting-fte-q-01
+vm-1046,pds-digital-d-meeting-db-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-digital-d-meeting-db-q-01
+vm-1047,pds-digital-d-meeting-app-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-digital-d-meeting-app-q-01
+vm-1049,pds-ppbot-db-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-ppbot-db-q-01
+vm-1050,pds-ppbot-app-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-ppbot-app-q-01
+vm-1051,pds-ppbot-fte-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-ppbot-fte-q-01
+vm-10528,HQ-CRPSFX-NM01,POWERED_ON,4,20480,6,d_meeting_chatbot,901484000207,HQ-CRPSFX-NM01
+vm-1056,pds-digital-d-meeting-db-p-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-digital-d-meeting-db-p-01
+vm-1057,pds-digital-d-meeting-app-p-01,POWERED_ON,1,4096,6,d_meeting_chatbot,901484000207,pds-digital-d-meeting-app-p-01
+vm-1058,pds-digital-d-meeting-fte-p-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-digital-d-meeting-fte-p-01
+vm-1059,pds-ppbot-db-p-01,POWERED_ON,16,65536,6,d_meeting_chatbot,901484000207,pds-ppbot-db-p-01
+vm-106,grp-ocum-p01,POWERED_ON,8,12288,6,d_meeting_chatbot,901484000207,grp-ocum-p01
+vm-1060,pds-ppbot-app-p-01,POWERED_ON,16,65536,6,d_meeting_chatbot,901484000207,pds-ppbot-app-p-01
+vm-1061,pds-ppbot-fte-p-01,POWERED_ON,16,65536,6,d_meeting_chatbot,901484000207,pds-ppbot-fte-p-01
+vm-1088,pds-ppbot-loadtest-q-01,POWERED_ON,4,16384,6,d_meeting_chatbot,901484000207,pds-ppbot-loadtest-q-01
+vm-6116,pds-dmsrvdb-u01,POWERED_ON,8,32768,6,d_mservice,901484000230,pds-dmsrvdb-u01
+vm-6197,pds-dmdb-t01,POWERED_ON,2,8192,6,d_mservice,901484000230,pds-dmdb-t01
+vm-6623,pds-dmsrvdb-p01,POWERED_ON,2,8192,6,d_mservice,901484000230,pds-dmsrvdb-p01
+vm-61182,grp-rvinven-p01,POWERED_ON,2,4096,6,d_mservice_uat,901484000230,grp-rvinven-p01
+vm-6625,Test-eJSADB,POWERED_ON,2,4096,6,d_mservice_uat,901484000230,Test-eJSADB
+vm-1507,pds-devent-db-t01,POWERED_ON,4,16384,6,DEvent,901484000194,pds-devent-db-t01
+vm-1508,pds-devent-web-t01,POWERED_ON,4,16384,6,DEvent,901484000194,pds-devent-web-t01
+vm-1835,pds-iotapp-t01,POWERED_ON,8,32768,6,IOT Platform,901484000196,pds-iotapp-t01
+vm-1887,pds-iotdb-t01,POWERED_ON,8,32768,6,IOT Platform,901484000196,pds-iotdb-t01
+vm-2013,pds-iotapp-t02,POWERED_ON,8,32768,6,IOT Platform,901484000196,pds-iotapp-t02
+vm-773,pds-present-t02,POWERED_OFF,4,8192,6,IT,901482000244,pds-present-t02
+vm-774,pds-present-t03,POWERED_OFF,1,4096,6,IT,901482000244,pds-present-t03
+vm-6561,pds-pmtool-p02,POWERED_ON,4,16384,6,IT,901484000120,pds-pmtool-p02
+vm-916,pds-adfs-p02,POWERED_ON,2,4096,6,IT,901484000179,pds-adfs-p02
+vm-917,pds-adfs-p01,POWERED_ON,2,4096,6,IT,901484000179,pds-adfs-p01
+vm-918,pds-adfspx-p01,POWERED_ON,2,4096,6,IT,901484000179,pds-adfspx-p01
+vm-919,pds-adfspx-p02,POWERED_ON,2,4096,6,IT,901484000179,pds-adfspx-p02
+vm-1841,grp-jenmas-p01,POWERED_ON,4,8192,6,pds_enterprise_iot_platform,901484000196,grp-jenmas-p01
+vm-2031,grp-chatdb-t01,POWERED_ON,4,16384,6,pds_enterprise_iot_platform,901484000196,grp-chatdb-t01
+vm-7594,kvis-smdb-p01,POWERED_ON,8,32768,6,PJR-KVIS-School Management System,901482000111,kvis-smdb-p01
+vm-7602,kvis-smwb-p01,POWERED_ON,8,32768,6,PJR-KVIS-School Management System,901482000111,kvis-smwb-p01
+vm-2929,pds-dperfwb-p01,POWERED_ON,2,4096,6,pjt_digital_d_performance,901484000240,pds-dperfwb-p01
+vm-2930,pds-dperfdb-p01,POWERED_ON,2,8192,6,pjt_digital_d_performance,901484000240,pds-dperfdb-p01
+vm-2177,pds-recruit-t01,POWERED_ON,4,16384,6,POT192090 Digital E Recruit,901481000020,pds-recruit-t01
+vm-3143,pds-rheltest73,POWERED_OFF,1,4096,6,pot999901_ifm_internal_use,555555555555,pds-rheltest73
+vm-3144,pds-rheltest74,POWERED_OFF,1,4096,6,pot999901_ifm_internal_use,555555555555,pds-rheltest74
+vm-3145,pds-rheltest76,POWERED_OFF,1,4096,6,pot999901_ifm_internal_use,555555555555,pds-rheltest76
+vm-1231,pds-subca-p01,POWERED_ON,2,4096,6,pot999905_ifm_o_internal_use,901484000207,pds-subca-p01
+vm-1232,pds-cacrl-p01,POWERED_ON,2,4096,6,pot999905_ifm_o_internal_use,901484000207,pds-cacrl-p01
+vm-1237,pds-fbadsync-p1,POWERED_ON,8,16384,6,pot999905_ifm_o_internal_use,901484000207,pds-fbadsync-p1
+vm-1064,PTTDigital-LMS-ClassWin-t01,POWERED_ON,2,4096,6,pot999945_ses_l_internal_use,901484000206,PTTDigital-LMS-ClassWin-t01
+vm-1230,pds-rootca-p01,POWERED_ON,2,4096,6,pot999952_ptt_digital_internal_use,901481000772,pds-rootca-p01
+vm-3692,pds-jensla-p01,POWERED_ON,4,16384,6,PTT DevOps Private Zone,901482000244,pds-jensla-p01
+vm-397,pds-jira-t01,POWERED_ON,4,16384,6,PTT DevOps Private Zone,901482000244,pds-jira-t01
+vm-3314,pds-erdb-p02,POWERED_ON,2,8192,6,PTT Digital E Recruit,901484000223,pds-erdb-p02
+vm-2991,pds-ex-ratet01,POWERED_ON,1,4096,6,PTT digital Exchange rate,901484000161,pds-ex-ratet01
+vm-3360,pds-exrate-p01,POWERED_ON,2,4096,6,ptt_digital_exchange_rate,901484000161,pds-exrate-p01
+vm-2354,pds-devopvz-p02,POWERED_ON,4,16384,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p02
+vm-2362,pds-devopvz-p01,POWERED_ON,4,16384,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p01
+vm-2369,pds-devopvz-p04,POWERED_ON,2,8192,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p04
+vm-2373,pds-devopvz-p05,POWERED_ON,2,8192,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p05
+vm-27730,pds-devopvz-p03,POWERED_ON,4,16384,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p03
+vm-27880,pds-devopvz-p03_20201118,POWERED_OFF,4,16384,6,PTT-DevOps Private Zone,901482000244,pds-devopvz-p03_20201118
+vm-3207,pds-erweb-p01,POWERED_ON,2,8192,6,PTTDigital E Recruit,901484000223,pds-erweb-p01
+vm-2418,pds-rpadb-t01,POWERED_ON,4,32768,6,RPA Quick Win for P2P,901481001604,pds-rpadb-t01
+vm-1951,pds-orch-p01,POWERED_ON,8,16384,6,Server Orchestrator For Patch Automation,555555555555,pds-orch-p01
+vm-2003,pds-tcmweb-p01,POWERED_ON,4,4096,6,tcm_technical_capacity_map,901484000227,pds-tcmweb-p01
+vm-2004,pds-tcmdb-p01,POWERED_ON,4,4096,6,tcm_technical_capacity_map,901484000227,pds-tcmdb-p01
+vm-2005,pds-tcmweb-t01,POWERED_ON,4,4096,6,tcm_technical_capacity_map,901484000227,pds-tcmweb-t01
+vm-2006,pds-tcmdb-t01,POWERED_ON,4,4096,6,tcm_technical_capacity_map,901484000227,pds-tcmdb-t01
+vm-2007,pds-wso2app-t02,POWERED_ON,5,8192,6,tcm_technical_capacity_map,901484000227,pds-wso2app-t02
+vm-2162,opsta-test-289,POWERED_OFF,2,4096,6,test_project,555555555555,opsta-test-289
+vm-21630,HQ-GCPPI-AP01,POWERED_ON,4,16384,6,test_project,555555555555,HQ-GCPPI-AP01
+vm-2165,opsta-test-289-1,POWERED_OFF,2,4096,6,test_project,555555555555,opsta-test-289-1
+vm-2169,ac-sap-dev,POWERED_ON,2,16384,6,test_project,555555555555,ac-sap-dev
+vm-7604,pds-djoindb-t01,POWERED_ON,4,8192,6,TestD-Join,901484000173,pds-djoindb-t01
+vm-7605,pds-djoinwb-t01,POWERED_ON,8,16384,6,TestD-Join,901484000173,pds-djoinwb-t01
+vm-2448,pds-thingw-t01,POWERED_ON,4,16384,6,Thingworx IoT Platfrom,901484000196,pds-thingw-t01
+vm-1070,ep-pi-qas,POWERED_ON,4,32768,14,POT176845,901482000244,ep-pi-qas
+vm-1987,EP-SF-DEV,POWERED_ON,4,24576,14,POT176845,901482000244,EP-SF-DEV
+vm-500,ep-gr-dev,POWERED_ON,2,12288,14,POT176845,901482000244,ep-gr-dev
+vm-514,ep-gr-qas,POWERED_ON,2,20480,14,POT176845,901482000244,ep-gr-qas
+vm-644,ep-pi-dev,POWERED_ON,2,24576,14,POT176845,901482000244,ep-pi-dev
+vm-6939,EP-SF-QAS,POWERED_ON,4,24576,14,POT176845,901482000244,EP-SF-QAS
+vm-790,ep-gr-sty,POWERED_ON,2,16384,14,POT176845,901482000244,ep-gr-sty
+vm-791,ep-gr-prd,POWERED_ON,4,24576,14,POT176845,901482000244,ep-gr-prd
+vm-1030,ep-hc-prd,POWERED_ON,2,32768,14,POT176845,901482000244,ep-hc-prd
+vm-1063,ep-hc-sty,POWERED_ON,1,13312,14,POT176845,901482000244,ep-hc-sty
+vm-1073,ep-bw-qas,POWERED_ON,4,65536,14,POT176845,901482000244,ep-bw-qas
+vm-1116,ep-ec-dev,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-dev
+vm-1139,ep-bw-sty,POWERED_ON,4,32768,14,POT176845,901482000244,ep-bw-sty
+vm-1141,ep-bwp-prd,POWERED_ON,8,73728,14,POT176845,901482000244,ep-bwp-prd
+vm-1154,ep-ec-qas,POWERED_ON,8,90112,14,POT176845,901482000244,ep-ec-qas
+vm-1183,ep-pi-prd,POWERED_ON,4,32768,14,POT176845,901482000244,ep-pi-prd
+vm-1184,ep-ec-prd,POWERED_ON,8,65536,14,POT176845,901482000244,ep-ec-prd
+vm-1198,ep-pi-sty,POWERED_ON,4,32768,14,POT176845,901482000244,ep-pi-sty
+vm-1199,ep-ec-app04,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-app04
+vm-1200,ep-ec-app02,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-app02
+vm-1201,ep-ec-app01,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-app01
+vm-1202,ep-ec-app03,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-app03
+vm-1203,ep-ec-sty,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-sty
+vm-1233,ep-di-prd,POWERED_ON,2,4096,14,POT176845,901482000244,ep-di-prd
+vm-1234,ep-dx-prd,POWERED_ON,1,4096,14,POT176845,901482000244,ep-dx-prd
+vm-1236,ep-dc-dev,POWERED_ON,2,4096,14,POT176845,901482000244,ep-dc-dev
+vm-1242,ep-dc-qas,POWERED_ON,2,4096,14,POT176845,901482000244,ep-dc-qas
+vm-1252,ep-rt-prd,POWERED_ON,2,4096,14,POT176845,901482000244,ep-rt-prd
+vm-1265,ep-sr-dev,POWERED_ON,2,12288,14,POT176845,901482000244,ep-sr-dev
+vm-1356,ep-sr-qas,POWERED_ON,1,12288,14,POT176845,901482000244,ep-sr-qas
+vm-1441,ep-md-dev,POWERED_ON,2,8192,14,POT176845,901482000244,ep-md-dev
+vm-1445,ep-md-prd,POWERED_ON,2,8192,14,POT176845,901482000244,ep-md-prd
+vm-1446,ep-sr-prd,POWERED_ON,2,24576,14,POT176845,901482000244,ep-sr-prd
+vm-1447,ep-md-qas,POWERED_ON,2,8192,14,POT176845,901482000244,ep-md-qas
+vm-1448,ep-sr-prj,POWERED_ON,2,12288,14,POT176845,901482000244,ep-sr-prj
+vm-1573,ep-ec-ste,POWERED_ON,4,32768,14,POT176845,901482000244,ep-ec-ste
+vm-2335,ep-sf-prd,POWERED_ON,4,24576,14,POT176845,901482000244,ep-sf-prd
+vm-953,ep-bw-dev,POWERED_ON,4,32768,14,POT176845,901482000244,ep-bw-dev
+vm-386,ep-as-dev,POWERED_ON,1,16384,14,POT176845,555555555555,ep-as-dev
+vm-390,ep-ep-dev,POWERED_ON,1,12288,14,POT176845,555555555555,ep-ep-dev
+vm-393,ep-ep-qas,POWERED_ON,2,12288,14,POT176845,555555555555,ep-ep-qas
+vm-416,ep-as-prd,POWERED_ON,2,16384,14,POT176845,555555555555,ep-as-prd
+vm-468,ep-ep-prd,POWERED_ON,2,16384,14,POT176845,555555555555,ep-ep-prd
+vm-677,HQ-AADConnect,POWERED_ON,4,8192,14,POT181793,901482000244,HQ-AADConnect
+vm-1255,HQ-MB2016-01,POWERED_ON,4,16384,14,POT181793,901482000244,HQ-MB2016-01
+vm-1256,HQ-Edge2016-01,POWERED_ON,4,32768,14,POT181793,901482000244,HQ-Edge2016-01
+vm-1352,HQ-SSHEME,POWERED_ON,4,16384,14,POT182220 SSHE ME,901482000244,HQ-SSHEME
+vm-1690,_Down_HQ-SecPW01,POWERED_OFF,4,16384,14,pot182258_security,901482000244,_Down_HQ-SecPW01
+vm-1762,HQ-SecGFin,POWERED_ON,4,16376,14,pot182258_security,901482000244,HQ-SecGFin
+vm-1770,HQ-SecRec1,POWERED_ON,4,8192,14,pot182258_security,901482000244,HQ-SecRec1
+vm-1786,HQ-SecRec4,POWERED_ON,2,8192,14,pot182258_security,901482000244,HQ-SecRec4
+vm-1866,HQ-SecRec5,POWERED_ON,4,16384,14,pot182258_security,901482000244,HQ-SecRec5
+vm-1571,Test-SPSMDB,POWERED_ON,4,16384,14,POT182771 PTTEP SmartPATH Application,901481001295,Test-SPSMDB
+vm-1572,Test-SPSM,POWERED_ON,4,16384,14,POT182771 PTTEP SmartPATH Application,901481001295,Test-SPSM
+vm-1891,HQ-SPSMDB,POWERED_ON,4,16384,14,POT182771 PTTEP SmartPATH Application,901481001295,HQ-SPSMDB
+vm-1892,HQ-SPSM,POWERED_ON,4,16384,14,POT182771 PTTEP SmartPATH Application,901481001295,HQ-SPSM
+vm-1819,HQ-MIM,POWERED_ON,2,8192,14,POT183423 SRV PTTEP MIM,901482000244,HQ-MIM
+vm-10534,HQ-APMAPP-AP81,POWERED_ON,8,24576,14,POT202279,901482000246,HQ-APMAPP-AP81
+vm-6699,HQ-APMCON-AP81,POWERED_ON,4,8192,14,POT202279,901482000246,HQ-APMCON-AP81
+vm-6700,HQ-APMDB-DB81,POWERED_ON,8,32768,14,POT202279,901482000246,HQ-APMDB-DB81
+vm-6793,HQ-CRPPI-OPC01,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-CRPPI-OPC01
+vm-7697,HQ-APMRP-RP81,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-APMRP-RP81
+vm-7698,HQ-APMANA-AP81,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-APMANA-AP81
+vm-7699,HQ-APMOTC-AP81,POWERED_OFF,2,8192,14,POT202279,901482000246,HQ-APMOTC-AP81
+vm-7700,HQ-APMEXE-AP81,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-APMEXE-AP81
+vm-7701,HQ-APMR-AP81,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-APMR-AP81
+vm-7702,HQ-APMELA-AP81,POWERED_ON,2,8192,14,POT202279,901482000246,HQ-APMELA-AP81
+vm-1071,HQ-AlfredDB,POWERED_ON,4,16384,14,pttep_digital_assistant,901482000244,HQ-AlfredDB

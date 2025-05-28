@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Sarabun:wght@400;600&display=swap');
+
+$navy: #173F5F;
+$blue: #21639B;
+$mint: #3CAEA3;
+$mustard: #F6D55C;
+$orange: #ED553B;
+$pink: #FF5E7C;
+$azure: #F0FFFF;
+
+$primary: $blue;
+$link: $blue;
+$info: $pink;
+$success: $mint;
+$warning: $mustard;
+$danger: $orange;
+$dark: $navy;
+
+$family-sans-serif: "Sarabun", sans-serif;
+$family-primary: "Sarabun", sans-serif;
+$family-secondary: "Fira Sans", serif;
+
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/helpers/_all.sass";
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/grid/_all.sass";
+@import "bulma/sass/layout/_all.sass";
+@import "bulma/sass/elements/_all.sass";
+@import "bulma/sass/form/_all.sass";
+@import "bulma/sass/components/_all.sass";
+@import "bulma-calendar/src/sass/index.sass";
+
+@import "bulma-extensions/bulma-steps/src/sass/index.sass";
+@import "bulma-extensions/bulma-divider/src/sass/index.sass";
+@import "bulma-extensions/bulma-timeline/src/sass/index.sass";
+
+.box {
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+}
+
+.hero.is-dark .tabs a.active {
+  color: $primary !important;
+}
+
+.datetimepicker-clear-button {
+  display: none;
+}
+
+.is-divider {
+  margin: 1.6rem 0 1.2rem 0;
+}
+
+.field.has-addons, .field.is-grouped {
+  flex-wrap: wrap;
+}
+
+.is-fullflex {
+  flex-basis: 100%;
+}
+
+.illustration-message {
+  @extend .has-text-centered;
+  padding-top: 5em;
+
+  svg {
+    height: 10em;
+    margin-bottom: 3em;
+    max-width: 100%;
+  }
+
+  .title {
+    @extend .is-size-4;
+  }
+
+  .subtitle {
+    @extend .is-size-6;
+  }
+}
+
+.illustration-status {
+  svg {
+    width: auto;
+    height: 5rem;
+  }
+}
+
+.app-header {
+  .hero-body {
+    padding: 1.5rem;
+  }
+
+  .hero-foot .tabs a.active {
+    background: $white;
+    font-weight: bold;
+    border-radius: 2px 2px 0px 0px;
+    color: $primary;
+  }
+}
+
+label[data-required]:before {
+  content: "* ";
+  float: left;
+  color: red;
+}
+
+.notification pre {
+  background: transparent;
+}
+
+a.operator-list {
+  // background-color: #ADD8E6;
+
+  &.is-active,
+  &:hover {
+    background-color: rgba(173, 216, 230, 0.35);
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+
+  &.comment {
+    font-family: $family-primary;
+    letter-spacing: .01em;
+  }
+}
+
+.price-card {
+  & + & {
+    margin-top: .5rem;
+  }
+}
+
+.custom-div-button {
+  margin-left: auto;
+  display: block;
+  flex: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.datetimepicker-dummy .datetimepicker-dummy-wrapper .datetimepicker-dummy-input {
+  max-width: 100%;
+}

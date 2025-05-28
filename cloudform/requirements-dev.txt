@@ -1,0 +1,87 @@
+Django==2.2.3
+django-extensions==2.2.1
+djangorestframework==3.9.4
+djangorestframework-simplejwt==4.3.0
+daphne==2.5.0
+PyJWT==1.7.1
+psycopg2-binary==2.8.4
+django-auth-ldap==2.0.0
+django-cors-headers==3.0.2
+django-filter==2.2.0
+requests==2.22.0
+jmespath==0.9.4
+ldap3==2.6.1
+django-fernet-fields==0.6
+django-ckeditor==5.9.0
+PyYAML==5.4.1
+pyvim==3.0.2
+django-simple-captcha==0.5.14
+pyvmomi==8.0.3.0.1
+
+# Celery
+celery==4.4.7
+django-celery-beat==2.0.0
+redis==3.5.3
+flower==0.9.5
+
+# channels
+channels==2.3.1
+channels-redis==2.4.1
+service-identity==18.1.0
+
+# deployment
+whitenoise==4.1.4
+uvicorn==0.10.8
+
+# logging
+graypy==2.1.0
+
+# elasticsearch
+elasticsearch==7.9.1
+elasticsearch-dsl==7.3.0
+django-elasticsearch-dsl==7.1.4
+
+# oracle
+cx-Oracle==8.0.1
+
+# weasy-print-for-create-pdf
+WeasyPrint==52.2
+Twisted==20.3.0
+
+# Pillow
+Pillow==9.5.0
+
+# extra tools for generate class diagrams
+django-extensions==2.2.1
+pydotplus==2.0.2
+
+# tools for load test fixtures
+PyYAML==5.4.1
+
+# test
+PyHamcrest==1.9.0
+tblib==1.4.0
+
+# api document
+Markdown==3.1.1
+
+# black
+black==19.3b0
+
+# pre-commit
+pre-commit==1.18.3
+
+# specifict linting rules for Django
+pylint-django==2.0.11
+
+# flake8
+flake8==3.7.8
+
+# pytest
+pytest-django==3.7.0
+
+# debugging
+ipdb
+
+# Pillow
+Pillow==9.5.0

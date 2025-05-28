@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  api:
+    container_name: dcloud_api
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    environment:
+      POSTGRES_HOST: dcloud_db
+      DEBUG_MODE: "true"
+      AUTH_LDAP_ENABLED: "false"
+      ELASTICSEARCH_HOST: es01
+      ELASTICSEARCH_PORT: 9200
+      REDIS_URL: redis://redis:6379
+    command: bash -c "chmod +x startup-scripts/entrypoint.develop.sh && startup-scripts/entrypoint.develop.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dcloud_db
+    networks:
+      - dcloud
+
+  dcloud-web:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile.local
+    container_name: dcloud-web
+    image: dcloud-web
+    restart: unless-stopped
+    command: yarn start
+    volumes:
+      - "./frontend:/home/node/app"
+      - "/home/node/app/node_modules"
+    ports:
+      - 3000:3000
+    networks:
+      - dcloud
+
+  dcloud_db:
+    container_name: dcloud_db
+    image: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "cloudform"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - dcloud
+
+volumes:
+  postgres:
+
+networks:
+  dcloud:
+    name: dcloud

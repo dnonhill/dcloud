@@ -1,0 +1,49 @@
+services:
+  api:
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    container_name: dcloud-api
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    environment:
+      AWX_API_HOST: ${AWX_API_HOST}
+      AWX_API_HOOK_SECRET: ${AWX_API_HOOK_SECRET}
+      AWX_API_KEY: ${AWX_API_KEY}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      CELERY_USERNAME: ${CELERY_USERNAME}
+      CELERY_PASSWORD: ${CELERY_PASSWORD}
+      API_URL: ${API_URL}
+      DCLOUD_FORCE_SECURE_REQUEST: ${DCLOUD_FORCE_SECURE_REQUEST}
+      VCENTER_URL: ${VCENTER_URL}
+      VCENTER_USERNAME: ${VCENTER_USERNAME}
+      VCENTER_PASSWORD: ${VCENTER_PASSWORD}
+      DEBUG_MODE: ${DEBUG_MODE}
+      AUTH_LDAP_ENABLED: ${AUTH_LDAP_ENABLED}
+      TZ: ${TZ}
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
+      ELASTICSEARCH_PORT: ${ELASTICSEARCH_PORT}
+    command: bash -c "chmod +x startup-scripts/entrypoint.uat.sh && startup-scripts/entrypoint.uat.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  dcloud-web:
+    network_mode: "host"
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile.dev
+    container_name: dcloud-web
+    image: dcloud-web
+    restart: unless-stopped
+    command: yarn start
+    volumes:
+      - "./frontend:/home/node/app"
+      - "/home/node/app/node_modules"
+    ports:
+      - 3000:3000

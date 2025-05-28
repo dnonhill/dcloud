@@ -1,0 +1,165 @@
+- model: users.User
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: operator
+    first_name: ""
+    last_name: ""
+    email: pitsanu@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: []
+    user_permissions: []
+
+- model: users.User
+  pk: 999
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: nobody
+    first_name: ""
+    last_name: ""
+    email: pitsanu@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: []
+    user_permissions: []
+
+- model: users.User
+  pk: 1000
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: cloud001
+    first_name: ""
+    last_name: ""
+    email: pitsanu+cloud001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [1000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1001
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: aprv001
+    first_name: ""
+    last_name: ""
+    email: pitsanu+aprv001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [2000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1002
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: admin001
+    first_name: ""
+    last_name: ""
+    email: pitsanu+admin001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [3000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1003
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: req001
+    first_name: ""
+    last_name: ""
+    email: pitsanu+req001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1004
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: req002
+    first_name: ""
+    last_name: ""
+    email: pitsanu+req001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [4000]
+    user_permissions: []
+
+
+- model: users.User
+  pk: 2000
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: cloud002
+    first_name: ""
+    last_name: ""
+    email: pitsanu+cloud002@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [1000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 2001
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: aprv002
+    first_name: ""
+    last_name: ""
+    email: pitsanu+aprv002@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [2000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 2002
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: admin002
+    first_name: ""
+    last_name: ""
+    email: pitsanu+admin002@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [3000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 3001
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: reviewer001
+    first_name: "Phumai"
+    last_name: "keng"
+    email: pitsanu+reviewer001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [5000]
+    user_permissions: []

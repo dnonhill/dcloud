@@ -1,0 +1,16 @@
+<html>
+<body>
+<div>
+    <p>Dear {{ assignee_full_name }}</p>
+    <p>Ticket {{ ticket_no }} has been assigned to you by {{ assigner_full_name }}. Please click here to view detail and
+        proceed.</p>
+    <p><a href="{{ ticket_url }}">{{ ticket_url }}</a></p>
+</div>
+<br/><br/>
+<div>
+    <p>เรียน {{ assignee_full_name }}</p>
+    <p>คำร้องขอเลขที่ (Ticket Number) ได้ถูกมอบหมายให้ท่านโดย {{ assigner_full_name }} กรุณาคลิ๊กที่นี่เพื่อตรวจสอบและดำเนินการ</p>
+    <p><a href="{{ ticket_url }}">{{ ticket_url }}</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+FROM python:3.8-bullseye
+
+ENV PYTHONUNBUFFERED 1
+
+ENV APPLICATION_ROOT /app
+RUN mkdir $APPLICATION_ROOT
+WORKDIR $APPLICATION_ROOT
+
+COPY oracleclient/instantclient-basiclite-linux.x64-19.9.0.0.0dbru.zip /opt/
+
+COPY . /app/
+
+
+RUN apt-get update \
+    && apt-get install -y libsasl2-dev libldap2-dev libaio1 unzip libz-dev libjpeg-dev libfreetype6-dev python3-dev \
+    && unzip /opt/instantclient-basiclite-linux.x64-19.9.0.0.0dbru.zip -d /opt/ \
+    && echo "/opt/instantclient_19_9" >> /etc/ld.so.conf.d/oracle.conf \
+    && ldconfig
+RUN apt install -y fonts-thai-tlwg-ttf
+RUN apt install -yqq netcat-traditional
+RUN pip install --upgrade setuptools
+RUN pip install -r requirements-dev.txt

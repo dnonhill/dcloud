@@ -1,0 +1,61 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var process_1 = __importDefault(require("process"));
+var path_1 = __importDefault(require("path"));
+var fs_1 = __importDefault(require("fs"));
+var crypto_1 = __importDefault(require("crypto"));
+var CONFIG_MODULE_PATH = "CONFIG_MODULE_PATH";
+var DEFAULT_ENV = "default";
+function defaultModulePath() {
+    return path_1.default.join(process_1.default.cwd(), "src", "config");
+}
+function environmentCliArgs() {
+    var cliArgs = process_1.default.argv.slice(2);
+    return cliArgs.length > 0 ? cliArgs[0] : null;
+}
+function relativePath(fullPath, relative) {
+    var pos = fullPath.indexOf(relative);
+    if (pos >= 0) {
+        return fullPath.substr(pos + relative.length);
+    }
+    return fullPath;
+}
+function moduleRelPath(fullPath) {
+    return relativePath(fullPath, configModulePath);
+}
+function checksum(path) {
+    var data = fs_1.default.readFileSync(path);
+    var hex = crypto_1.default
+        .createHash("md5")
+        .update(data.toString("utf8"), "utf8")
+        .digest("hex");
+    return hex;
+}
+var configModulePath = process_1.default.env[CONFIG_MODULE_PATH] || defaultModulePath();
+var envArg = environmentCliArgs();
+var runtimeEnv = envArg || process_1.default.env["NODE_ENV"] || DEFAULT_ENV;
+var moduleEnvPath = path_1.default.join(configModulePath, "index.ts");
+var runtimeEnvPath = path_1.default.join(configModulePath, runtimeEnv.endsWith(".ts") ? runtimeEnv : runtimeEnv + ".ts");
+var runtimeEnvExists = fs_1.default.existsSync(runtimeEnvPath);
+var moduleEnvExists = fs_1.default.existsSync(moduleEnvPath);
+if (!runtimeEnvExists) {
+    console.error("Enviornment \"" + runtimeEnv + "\" configuration not found.\nCheck if " + runtimeEnvPath + " file exists");
+    process_1.default.exit(1);
+}
+console.info("Configuring for " + runtimeEnv + " environment");
+var replacement = true;
+var checkDiff = moduleEnvExists && runtimeEnvExists;
+if (checkDiff) {
+    var different = checksum(moduleEnvPath) !== checksum(runtimeEnvPath);
+    replacement = different ? true : false;
+    if (different) {
+        console.info("Different in current and target environment");
+    }
+}
+if (runtimeEnvExists && replacement) {
+    fs_1.default.copyFileSync(runtimeEnvPath, moduleEnvPath);
+    console.info("Replace " + path_1.default.basename(runtimeEnvPath) + " with " + path_1.default.basename(moduleEnvPath));
+}

@@ -1,0 +1,95 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/redirect-nginx
+  tag: 1.16.1
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-oldcloud-redirect-nginx
+fullnameOverride: dcloud-oldcloud-redirect-nginx
+
+env:
+  - name: TZ
+    value: 'Asia/Bangkok'
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 8000
+      internalPort: 8000
+
+route:
+  enabled: true
+  routes:
+    - name: request-route
+      spec:
+        host: cloudrequest.pttdigital.com
+        to:
+          kind: Service
+          name: dcloud-oldcloud-redirect-nginx
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+    - name: price-route
+      spec:
+        host: cloudprice.pttdigital.com
+        to:
+          kind: Service
+          name: dcloud-oldcloud-redirect-nginx
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+        # tls:
+        #   termination: edge
+        #   certificate: "CHANGEME"
+        #   key: |
+        #     CHANGEME
+        #   caCertificate: |
+        #     CHANGEME
+        #   insecureEdgeTerminationPolicy: Redirect
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3

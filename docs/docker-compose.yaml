@@ -1,0 +1,48 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:11.4
+    environment:
+      - POSTGRES_DB=cloudform_docs
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  collect_static:
+    build: .
+    image: docs:latest
+    command: python manage.py collectstatic --no-input --clear
+    volumes:
+      - static_volume:/code/static/
+  docs:
+    image: docs:latest
+    volumes:
+      - static_volume:/code/static/
+      - media_volume:/code/media/
+      - ./docs/settings/local.py:/code/docs/settings/local.py:ro
+    expose:
+      - "8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: docs.settings.production
+      PREFIX_PATH: /docs/
+    depends_on:
+      - collect_static
+      - postgres
+  nginx:
+    build:
+      context: ./container/nginx
+    expose:
+      - "80"
+    ports:
+      - "8000:80"
+    volumes:
+      - static_volume:/code/static/:ro
+      - media_volume:/code/media/:ro
+    environment:
+      PREFIX_PATH: /docs/
+    depends_on:
+      - docs
+volumes:
+  static_volume:
+  media_volume:

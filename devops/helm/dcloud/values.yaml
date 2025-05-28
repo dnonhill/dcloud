@@ -1,0 +1,186 @@
+# Default values for generic-deployment.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# serviceAccountName: dcloud
+
+replicaCount: 1
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/ui
+  tag: uat
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: nexus
+
+strategy:
+  # Blue-Green Deployment
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 100%
+    maxUnavailable: 0
+  # Settings for Recreate strategy
+  # type: Recreate
+
+nameOverride: dcloud-dcloud-uat
+fullnameOverride: dcloud-dcloud-uat
+
+# env:
+  # - name: ASPNETCORE_ENVIRONMENT
+  #   value: Development
+  # Using configmap from this Chart just use key name
+  # - name: FOO_FROM_CONFIGMAP_ABOVE
+  #   configmap:
+  #     key: foo
+  # Using other configmap need configmap's name
+  # - name: BAZ_FROM_OTHER
+  #   configmap:
+  #     name: baz-configmap
+  #     key: baz
+
+# envFrom:
+  # - secret:
+  #     name: secret01
+  # - prefix: PF_ (if you want to put prefix on every key name)
+  #   configmap:
+  #     name: (leave blank to use configMap from this Chart)
+  # - configmap:
+  #     name: configmap02
+
+# volumeMounts:
+  # - name: sample-storage-volume
+  #   mountPath: /usr/src/app/pv-folder
+
+# volumes:
+  # - name: sample-storage-volume
+  #   persistentVolumeClaim:
+  #     claimName: sample-storage
+
+containerPorts:
+  - 3000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 1
+    memory: 1Gi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+service:
+  enabled: false
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 3000
+      internalPort: 3000
+
+serviceHeadless:
+  enabled: false
+
+route:
+  enabled: false
+  routes:
+    - name: dcloud-ui-uat-route
+      spec:
+        host: dcloud-service-uat.pttgrp.com
+        to:
+          kind: Service
+          name: dcloud-ui-uat
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+
+healthCheck:
+  enabled: false
+  readinessProbe: {}
+  # readinessProbe:
+  #   httpGet:
+  #     path: /ready
+  #     port: 80
+  #   initialDelaySeconds: 0
+  #   timeoutSeconds: 1
+  #   periodSeconds: 10
+  #   successThreshold: 1
+  #   failureThreshold: 3
+  livenessProbe: {}
+  # livenessProbe:
+  #   httpGet:
+  #     path: /health
+  #     port: 80
+  #   initialDelaySeconds: 0
+  #   timeoutSeconds: 1
+  #   periodSeconds: 10
+  #   successThreshold: 1
+  #   failureThreshold: 3
+
+# sidecarContainers:
+#   - name: auth-ptt
+#     image:
+#       repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+#       tag: uat
+#       pullPolicy: Always
+#     command:
+#     env:
+#     containerPorts:
+#       - 8001
+#     healthCheck:
+#       enabled: false
+#       readinessProbe:
+#         httpGet:
+#           path: /ready
+#           port: 80
+#         initialDelaySeconds: 0
+#         timeoutSeconds: 1
+#         periodSeconds: 10
+#         successThreshold: 1
+#         failureThreshold: 3
+#       livenessProbe:
+#         httpGet:
+#           path: /health
+#           port: 80
+#         initialDelaySeconds: 0
+#         timeoutSeconds: 1
+#         periodSeconds: 10
+#         successThreshold: 1
+#         failureThreshold: 3
+#     resources:
+#       requests:
+#         cpu: 100m
+#         memory: 50Mi
+#       limits:
+#         cpu: 200m
+#         memory: 500Mi
+
+# Chart values https://artifacthub.io/packages/helm/bitnami/redis
+redis:
+  enabled: false
+  auth:
+    enabled: false
+    sentinel: false
+  serviceAccount:
+    name: svc
+  sentinel:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+      size: 8Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  architecture: standalone

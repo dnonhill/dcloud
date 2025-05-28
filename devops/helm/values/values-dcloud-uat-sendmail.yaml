@@ -1,0 +1,99 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+  tag: uat
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-uat-sendmail
+fullnameOverride: dcloud-uat-sendmail
+
+command:
+  - /code/scripts/sendmail.sh
+
+env:
+  - name: POSTGRES_DB
+    value: dcloud
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: dcloud-uat-db-postgresql
+  - name: LISTEN_PORT
+    value: 8000
+  - name: EMAIL_ENABLED
+    value: true
+  - name: EMAIL_BACKEND
+    value: "smtp"
+  - name: EMAIL_HOST
+    value: "app2smtp.pttgrp.corp"
+  - name: EMAIL_PORT
+    value: "25"
+  - name: EMAIL_HOST_USER
+    value: ""
+  - name: EMAIL_HOST_PASSWORD
+    value: ""
+  - name: SENDMAIL_SENDER
+    value: pttdigital-cloudadmin@pttdigital.com
+  - name: PYTHONUNBUFFERED
+    value: "yes"
+  - name: SENDMAIL_DAEMON
+    value: "yes"
+  - name: TZ
+    value: 'Asia/Bangkok'
+envFrom:
+  - secret:
+      name: dcloud-psql
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 100m
+    memory: 500Mi
+
+service:
+  enabled: false
+  type: ClusterIP
+  annotation: {}
+  ports: []
+    # - name: app-svc
+    #   protocol: TCP
+    #   externalPort: 8000
+    #   internalPort: 8000
+
+route:
+  enabled: false
+  routes: []
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3

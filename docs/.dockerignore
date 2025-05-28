@@ -1,0 +1,5 @@
+static/
+media/
+venv/
+postgres/
+docs/settings/local.py

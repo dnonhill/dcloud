@@ -1,0 +1,117 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+image:
+  repository: registry.dclouddev.opsta.in.th/dcloud/dcloud
+  tag: dev
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+command:
+  - celery
+  - -A
+  - cloudform
+  - beat
+  - -l
+  - INFO
+  - --scheduler
+  - django_celery_beat.schedulers:DatabaseScheduler
+
+nameOverride: dcloud-dev-celery-beat
+fullnameOverride: dcloud-dev-celery-beat
+
+env:
+  - name: DCLOUD_VERSION
+    value: "undefined"
+  - name: DCLOUD_GIT_HASH
+    value: "undefined"
+  - name: DCLOUD_DEPLOY_DATE
+    value: "undefined"
+  - name: AWX_API_HOST
+    value: "http://dcloudawx-dev.opsta.in.th"
+  - name: POSTGRES_DB
+    value: dcloud
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: dcloud-dev-db-postgresql
+  - name: DCLOUD_FORCE_SECURE_REQUEST
+    value: true
+  - name: EMAIL_ENABLED
+    value: true
+  - name: EMAIL_BACKEND
+    value: "smtp"
+  - name: EMAIL_HOST
+    value: "app2smtp.pttgrp.corp"
+  - name: EMAIL_PORT
+    value: "25"
+  - name: EMAIL_HOST_USER
+    value: ""
+  - name: EMAIL_HOST_PASSWORD
+    value: ""
+  - name: SENDMAIL_SENDER
+    value: pttdigital-cloudadmin@pttdigital.com
+  - name: REDIS_ENABLED
+    value: true
+  - name: REDIS_HOSTS
+    value: "dcloud-dev-app-redis-master"
+  - name: REDIS_URL
+    value: "redis://dcloud-dev-app-redis-master:6379"
+  - name: GRAYLOG_HOST
+    value: "dcloudgraylog.pttdigital.com"
+  - name: GRAYLOG_HANDLER_CLASS
+    value: "graypy.handler.GELFTCPHandler"
+  - name: ELASTICSEARCH_HOST
+    value: "dcloud-dev-elasticsearch"
+  - name: ELASTICSEARCH_PORT
+    value: "9200"
+  - name: API_URL
+    value: "http://dcloud-dev-app:8000"
+  - name: CELERY_USERNAME
+    value: admin
+  - name: CELERY_PASSWORD
+    value: P@ssw0rd
+  - name: VCENTER_URL
+    value: "https://vcenter.site2.opsta.in.th"
+  - name: VCENTER_USERNAME
+    value: "margomusto@site2.opsta.in.th"
+  - name: VCENTER_PASSWORD
+    value: "LU8mUj72ucI0xZTEf19f"
+  - name: TZ
+    value: 'Asia/Bangkok'
+envFrom:
+  - secret:
+      name: dcloud-psql
+  - secret:
+      name: dcloud-dev-awx-automation
+  - secret:
+      name: dcloud-secret-key
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+healthCheck:
+  enabled: true
+  readinessProbe: null
+  livenessProbe:
+    exec:
+      command:
+        - sh
+        - '-c'
+        - celery -A cloudform status|| exit 1
+    initialDelaySeconds: 5
+    timeoutSeconds: 60
+    periodSeconds: 300
+    successThreshold: 1
+    failureThreshold: 3

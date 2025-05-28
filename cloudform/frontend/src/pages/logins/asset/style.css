@@ -1,0 +1,22 @@
+.logo {
+  margin-top: 5em;
+  width: 10em;
+}
+
+.logo-ptt {
+  position: absolute;
+  width: 6em;
+  left: 106px;
+  top: 0;
+  margin-bottom: 4px;
+}
+.w-15 {
+  width: 14em;
+}
+.ml-16 {
+  margin-left: 16px;
+}
+
+.illustrator {
+  width: 80%;
+}

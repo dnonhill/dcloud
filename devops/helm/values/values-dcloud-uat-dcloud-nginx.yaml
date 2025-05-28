@@ -1,0 +1,105 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/nginx
+  tag: 1.16.1
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-uat-app-nginx
+fullnameOverride: dcloud-uat-app-nginx
+
+volumeMounts:
+  - name: dcloud-uat-app-media-volume
+    mountPath: /code/media
+  - name: dcloud-uat-app-static-volume
+    mountPath: /code/static
+
+volumes:
+  - name: dcloud-uat-app-media-volume
+    persistentVolumeClaim:
+      claimName: dcloud-uat-app-media-volume-storage
+  - name: dcloud-uat-app-static-volume
+    persistentVolumeClaim:
+      claimName: dcloud-uat-app-static-volume-storage
+
+env:
+  - name: PREFIX_PATH
+    value: "/api"
+  - name: DOCS_HOST
+    value: dcloud-uat-app
+  - name: DOCS_PORT
+    value: 8000
+  - name: TZ
+    value: 'Asia/Bangkok'
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 8000
+      internalPort: 8000
+
+route:
+  enabled: true
+  routes:
+    - name: dcloud-uat-app-route
+      spec:
+        host: dcloud-uat.pttdigital.com
+        to:
+          kind: Service
+          name: dcloud-uat-app-nginx
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+        # tls:
+        #   termination: edge
+        #   certificate: "CHANGEME"
+        #   key: |
+        #     CHANGEME
+        #   caCertificate: |
+        #     CHANGEME
+        #   insecureEdgeTerminationPolicy: Redirect
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3

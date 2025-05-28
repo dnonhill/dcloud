@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block doc_content %}
+  {% for block in page.body %}
+    <section class="doc-section">
+    {% if block.block_type == 'heading' %}
+      <h2 id="{{ block.value }}" class="section-title">{{ block.value }}</h2>
+    {% else %}
+      <div class="section-block">
+        {% include_block block %}
+      </div>
+    {% endif %}
+    </section>
+  {% endfor %}
+  <aside>
+    {% with child_pages=page.get_descendants.all %}
+      {% if child_pages %}
+        <h2>Related pages</h2>
+        <ul>
+          {% for child_page in child_pages %}
+            <li><a href="{% pageurl child_page %}">{{ child_page.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </aside>
+{% endblock %}

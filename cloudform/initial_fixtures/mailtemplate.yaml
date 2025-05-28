@@ -1,0 +1,201 @@
+- model: mail.mailtemplate
+  pk: 1
+  fields:
+    template_name: mail/reviewer.ticket.request.html
+    signal_name: requestor_waitting_review
+    recipient: PTTDIGITAL-Dcloud-Reviewer@pttdigital.com
+    subject: 'DCloud: Ticket {{ ticket_no }} was waiting to be reviewed'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear Reviewer</p>
+          <p>Ticket {{ ticket.ticket_no }} was created and waiting for your approval. Please click here to view detail.</p>
+          <p>Please click here to view the detail <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 Reviewer</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48
+          {{ ticket_no }} \u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e08\u0e32\u0e23\u0e13\u0e32\u0e08\u0e32\u0e01\u0e17\u0e48\u0e32\u0e19</p>
+          <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+- model: mail.mailtemplate
+  pk: 2
+  fields:
+    template_name: mail/ticket.submitted.requestor.html
+    signal_name: requestor_waitting_review
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} was created'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>We have received your ticket as Ticket
+      NO: {{ ticket_no }}.
+      Please click here to view detail.</p>\r\n\r\n<p><a href=\"{{ ticket_url }}?username={{
+      requestor.username }}&amp;domain={{ requestor.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E23\u0E30\u0E1A\u0E1A\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 3
+  fields:
+    template_name: mail/ticket.approved.html
+    signal_name: ticket_approved
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} was approved.'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>Ticket {{ ticket_no }} has been approved
+      by {{ approver_full_name }} We are processing your request. Please click here
+      to view your status</p>\r\n\r\n<p><a href=\"{{ ticket_url }}?username={{ requestor.username
+      }}&amp;domain={{ requestor.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E2D\u0E19\u0E38\u0E21\u0E31\u0E15\u0E34\u0E41\u0E25\u0E49\u0E27
+      \u0E40\u0E23\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E07\u0E32\u0E19\u0E15\u0E32\u0E21\u0E17\u0E35\u0E48\u0E17\u0E48\u0E32\u0E19\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D
+      \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 4
+  fields:
+    template_name: mail/ticket.waiting.assigned.html
+    signal_name: ticket_approved
+    recipient: PTTDIGITAL-Dcloud-Admin@pttdigital.com
+    subject: 'DCloud: Ticket {{ticket_no}} was waiting to be assigned to operator'
+    content: "<html>\r\n<body>\r\n<div>\r\n    <p>Dear Cloud Admin</p>\r\n    <p>Ticket
+      {{ ticket_no }} has been approved by {{ approver_full_name }} and waiting to
+      be assigned to operator.</p>\r\n    <p>Please click here to review and assign
+      this ticket to operator.</p>\r\n    <p><a href=\"{{ ticket_url }}\">{{ ticket_url
+      }}</a></p>\r\n</div>\r\n<br/><br/>\r\n<div>\r\n    <p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      Cloud Admin</p>\r\n    <p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E2D\u0E19\u0E38\u0E21\u0E31\u0E15\u0E34\u0E41\u0E25\u0E49\u0E27\u0E41\u0E25\u0E30\u0E01\u0E33\u0E25\u0E31\u0E07\u0E23\u0E2D\u0E01\u0E32\u0E23\u0E21\u0E2D\u0E1A\u0E2B\u0E21\u0E32\u0E22\u0E43\u0E2B\u0E49\u0E1C\u0E39\u0E49\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34\u0E07\u0E32\u0E19</p>\r\n
+      \   <p>\u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E41\u0E25\u0E30\u0E21\u0E2D\u0E1A\u0E2B\u0E21\u0E32\u0E22\u0E43\u0E2B\u0E49\u0E1C\u0E39\u0E49\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34\u0E07\u0E32\u0E19</p>\r\n
+      \   <p><a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>\r\n</div>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 5
+  fields:
+    template_name: mail/ticket.rejected.html
+    signal_name: ticket_rejected
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} was rejected'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>Ticket {{ ticket_no }} has been rejected
+      by {{ approver_full_name }}</p>\r\n\r\n<p>The reason to reject is:</p>\r\n\r\n<p>{{
+      approvement_reason }}</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Please click here to
+      view the detail <a href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{
+      requestor.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E16\u0E39\u0E01\u0E1B\u0E0F\u0E34\u0E40\u0E2A\u0E18</p>\r\n\r\n<p>\u0E40\u0E19\u0E37\u0E48\u0E2D\u0E07\u0E08\u0E32\u0E01:</p>\r\n\r\n<p>{{
+      approvement_reason }}</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14
+      <a href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 6
+  fields:
+    template_name: mail/ticket.assigned.assignee.html
+    signal_name: ticket_assigned
+    recipient: '{{assignee_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} has been assigned to you'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ assignee_full_name }}</p>\r\n\r\n<p>Ticket {{ ticket_no }} has been assigned
+      to you by {{ assigner_full_name }}. Please click here to view detail and proceed.</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ assignee.username }}&amp;domain={{ assignee.domain
+      }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ assignee_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E44\u0E14\u0E49\u0E16\u0E39\u0E01\u0E21\u0E2D\u0E1A\u0E2B\u0E21\u0E32\u0E22\u0E43\u0E2B\u0E49\u0E17\u0E48\u0E32\u0E19\u0E42\u0E14\u0E22
+      {{ assigner_full_name }} \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E41\u0E25\u0E30\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E01\u0E32\u0E23</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ assignee.username }}&amp;domain={{ assignee.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 7
+  fields:
+    template_name: mail/ticket.assigned.requestor.html
+    signal_name: ticket_assigned
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} has been assigned'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>Ticket {{ ticket_no }} has been assigned
+      to {{ assignee_full_name }}. Please click here to view the detail</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E44\u0E14\u0E49\u0E16\u0E39\u0E01\u0E21\u0E2D\u0E1A\u0E2B\u0E21\u0E32\u0E22\u0E43\u0E2B\u0E49
+      {{ assignee_full_name }} \u0E14\u0E33\u0E19\u0E40\u0E19\u0E34\u0E19\u0E01\u0E32\u0E23
+      \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 8
+  fields:
+    template_name: mail/ticket.completed.html
+    signal_name: ticket_completed
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} has been completed'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>Ticket {{ ticket_no }} has been completed.
+      Please click here to view the detail</p>\r\n\r\n<p><a href=\"{{ ticket_url }}?username={{
+      requestor.username }}&amp;domain={{ requestor.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E16\u0E39\u0E01\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E23\u0E49\u0E2D\u0E22\u0E41\u0E25\u0E49\u0E27
+      \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 9
+  fields:
+    template_name: mail/local_user.created.html
+    signal_name: mail_activate_account
+    recipient: '{{user_email}}'
+    subject: User activation on DCloud service.
+    content: "<html>\r\n<body>\r\n    <p>\r\n        Dear {{ user.first_name }} {{
+      user.last_name }},\r\n    </p>\r\n    <p>\r\n        Welcome to DCloud system.
+      You can activate your account here:\r\n        <a href=\"https://{{ activate_url
+      }}\"\r\n           style=\"background-color: #21639B; color:#fff; padding: 7px
+      16px; text-align: center; border-radius: 4px;\">\r\n            Activate account\r\n
+      \       </a>\r\n    </p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 10
+  fields:
+    template_name: mail/local_user.reset_password.html
+    signal_name: mail_reset_password
+    recipient: '{{user_email}}'
+    subject: Reset password on DCloud service.
+    content: "<html>\r\n<body>\r\n    <p>\r\n        Dear {{user.first_name}} {{user.last_name}},\r\n
+      \   </p>\r\n    <p>\r\n        Welcome to DCloud system. You can reset your
+      password here:\r\n        <a href=\"https://{{reset_password_url}}\"\r\n           style=\"background-color:
+      #21639B; color:#fff; padding: 7px 16px; text-align: center; border-radius: 4px;\">\r\n
+      \           Reset Password\r\n        </a>\r\n    </p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 11
+  fields:
+    template_name: mail/ticket.overdue.assignee.html
+    signal_name: overdue
+    recipient: '{{assignee_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was overdue'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ assignee_full_name }}</p>\r\n\r\n<p>Your assigned ticket {{ ticket_no }}
+      was overdue.</p>\r\n\r\n<p>Please click here to view detail and proceed.<br
+      />\r\n<a href=\"{{ ticket_url }}?username={{ assignee.username }}&amp;domain={{
+      assignee.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ assignee_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E17\u0E35\u0E48\u0E16\u0E39\u0E01\u0E21\u0E2D\u0E1A\u0E2B\u0E21\u0E32\u0E22\u0E43\u0E2B\u0E49\u0E17\u0E48\u0E32\u0E19\u0E40\u0E01\u0E34\u0E19\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E40\u0E27\u0E25\u0E32\u0E41\u0E25\u0E49\u0E27</p>\r\n\r\n<p>\u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E41\u0E25\u0E30\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E01\u0E32\u0E23<br
+      />\r\n<a href=\"{{ ticket_url }}?username={{ assignee.username }}&amp;domain={{
+      assignee.domain }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+- model: mail.mailtemplate
+  pk: 12
+  fields:
+    template_name: mail/ticket.overdue.assigner.html
+    signal_name: overdue
+    recipient: '{{assigner_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was overdue'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ assigner_full_name }}</p>\r\n\r\n<p>Your ticket {{ ticket_no }} was overdue.</p>\r\n\r\n<p>Please
+      click here to view detail and proceed.<br />\r\n<a href=\"{{ ticket_url }}?username={{
+      assigner.username }}&amp;domain={{ assigner.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ assigner_full_name }}</p>\r\n\r\n<p>\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E40\u0E01\u0E34\u0E19\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E40\u0E27\u0E25\u0E32\u0E41\u0E25\u0E49\u0E27</p>\r\n\r\n<p>\u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E41\u0E25\u0E30\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E01\u0E32\u0E23<br
+      />\r\n<a href=\"{{ ticket_url }}?username={{ assigner.username }}&amp;domain={{
+      assigner.domain }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+      
+
+

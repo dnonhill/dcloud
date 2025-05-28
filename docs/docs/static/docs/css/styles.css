@@ -1,0 +1,12 @@
+.ptt-logo {
+  width: 158px;
+  margin-bottom: 0.5em;
+}
+
+.ptt-header {
+  background-color: white;
+}
+
+.ptt-header li a {
+  color: #58bbee;
+}

@@ -1,0 +1,17 @@
+<html>
+<body>
+<div>
+    <p>Dear {{ approver_full_name }}</p>
+    <p>Ticket {{ ticket.ticket_no }} was created and waiting for your approval. Please click here to view detail.</p>
+    <p>(<a href="{{ approvement_url }}">{{ approvement_url }}</a>)</p>
+    <p>Remark: The cost for your approved resources will be charged to your Department/Company</p>
+</div>
+<br/><br/>
+<div>
+    <p>เรียน {{ approver_full_name }}</p>
+    <p>คำร้องขอเลขที่ {{ ticket.ticket_no }} กำลังรอการพิจารณาจากท่าน กรุณาคลิ๊กที่นี่เพื่อตรวจสอบรายละเอียด</p>
+    <p><a href="{{ approvement_url }}">{{ approvement_url }}</a></p>
+    <p>หมายเหตุ: ค่าใช้จ่ายที่เกิดขึ้นในการใช้งาน resources ที่ท่านอนุมัติจะถูกเรียกเก็บไปยังแผนก/บริษัท ของท่าน</p>
+</div>
+</body>
+</html>

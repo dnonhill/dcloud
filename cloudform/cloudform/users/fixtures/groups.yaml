@@ -1,0 +1,26 @@
+- model: auth.group
+  pk: 1000
+  fields:
+    name: cloudadmin
+    permissions: []
+- model: auth.group
+  pk: 2000
+  fields:
+    name: approver
+    permissions: []
+- model: auth.group
+  pk: 3000
+  fields:
+    name: operator
+    permissions: []
+- model: auth.group
+  pk: 4000
+  fields:
+    name: requestor
+    permissions: []
+
+- model: auth.group
+  pk: 5000
+  fields:
+    name: reviewer
+    permissions: []

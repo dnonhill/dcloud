@@ -1,0 +1,303 @@
+// PREPARE VARIABLES FUNCTION
+def prepareVars() {
+  envName = getEnvName()
+  appFullName = "dcloud"
+  docsFullName = "docs"
+  passwordManagerFullName = "passwordmanager"
+  sendmailFullName = "sendmail"
+  celeryBeatFullName = "celery-beat"
+  celeryWorkerFullName = 'celery-worker'
+  imgRepoServerUrl = "dcloudnexus-registry.pttdigital.com"
+  imgRepoName = "dcloud"
+  appNginxImgName = "nginx"
+  docsNginxImgName = "nginx"
+  appImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${appFullName}"
+  docsImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${docsFullName}"
+  appNginxImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${appNginxImgName}"
+  docsNginxImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${docsNginxImgName}"
+  imgRepoCred = "registry-irrnexus-cred"
+  imgTag = "uat"
+  appNginxImgTag = "1.16.1"
+  docsNginxImgTag = "1.16.1"
+
+  ocpServer = "https://api.ocpdev.pttdigital.com:6443"
+  ocpProject = "dcloud-uat"
+  ocpCred = "dcloud-uat-ocp-cred"
+
+  helmFullDir = "${WORKSPACE}/devops/helm"
+  helmChartDir = "${WORKSPACE}/devops/helm/dcloud"
+  currentDate = sh (script: "date +'%Y%m%d'", returnStdout: true)
+  gitCommitHash = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+
+  switch(envName) {
+    case "dev":
+      imgRepoServerUrl = "registry.dcloud-dev.opsta.in.th"
+      appImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${appFullName}"
+      docsImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${docsFullName}"
+      appNginxImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${appNginxImgName}"
+      docsNginxImgFullName = "${imgRepoServerUrl}/${imgRepoName}/${docsNginxImgName}"
+      imgTag = "dev"
+      break
+    case "uat":
+      imgTag = "uat"
+      break
+    case "production":
+      ocpServer = "https://api.ocpprd.pttdigital.com:6443/"
+      ocpProject = "dcloud-production"
+      ocpCred = "dcloud-prd-ocp-cred"
+      imgTag = "production-${env.SELECTED_TAG}"
+      sh "git checkout ${env.SELECTED_TAG}"
+      // appNginxImgTag = "1.16.1"
+      // docsNginxImgTag = "1.16.1"
+      break
+  }
+
+}
+// END VARIABLES PREPARATION
+
+
+def getEnvName() {
+  switch(env.BRANCH_NAME) {
+    case "develop":
+      return "dev"
+      break
+    case "master":
+      return "uat"
+      break
+    default:
+      if(env.SELECTED_TAG != null && SELECTED_TAG != "") {
+        return "production"
+      } else {
+        throw new Exception("Cannot define environment name!")
+      }
+  }
+}
+
+
+def runOWASP(){
+  stage('Run OWASP Checks') {
+    dir('cloudform/frontend'){
+      sh "npm ci"
+    }
+    dir('cloudform/acceptance-test'){
+      sh "npm ci"
+    }
+    dependencyCheck(
+    additionalArguments: "--out dependency-check-report.xml",
+    odcInstallation: "dependency-check"
+    )
+    dependencyCheckPublisher(
+    pattern: 'dependency-check-report.xml'
+    )
+    dir('cloudform/frontend'){
+      sh "rm -rf node_modules"
+    }
+    dir('cloudform/acceptance-test'){
+      sh "rm -rf node_modules"
+    }
+  }
+}
+
+
+def runSonarQube(){
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'sonarqube-scanner'
+    withSonarQubeEnv('sonarqube-dcloud') {
+      // SCAN AND SUBMIT COVERAGE RESULT FROM JEST
+      def sonarOptions = []
+      sonarOptions.add("-Dsonar.projectKey=${appFullName}") // SET PROJECT KEY
+      sonarOptions.add("-Dsonar.projectName=${appFullName}") // SET PROJECT NAME
+      sonarOptions.add("-Dsonar.sources=.") // SET SOURCE PATH
+      sonarOptions.add("-Dsonar.exclusions=tests/**") // EXCLUDE TESTS PATH
+      sonarOptions.add("-Dsonar.javascript.lcov.reportPaths=tests/TestResults/lcov.info") // READ LCOV coverage report
+      sonarOptions.add("-Dsonar.junit.reportPaths=tests/TestResults/junit.xml") // READ JUNIT REPORT
+      sonarOptions = sonarOptions.join(' ')
+      env.NODE_PATH = "/usr/lib/node_modules"
+      sh "${scannerHome}/bin/sonar-scanner ${sonarOptions}"
+    }
+  }  /* stage sonarqube */
+
+  stage("Quality Gate"){
+    // WAITING FOR SONARQUBE QUALITY GATE RESULT
+    timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+      def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+      if (qg.status != 'OK') {
+        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+      }
+    }
+  } /* stage quality gate */
+}
+
+
+def buildAndPushDockerImage(){
+  stage('Build DCloud') {
+    echo "Start building image [${appImgFullName}:${imgTag}]"
+    docker.withRegistry("https://${imgRepoServerUrl}", "${imgRepoCred}") {
+      // Pull Docker Image first to use with --cache-from
+      // sh "docker pull ${appImgFullName}:${imgTag}"
+      if (envName != 'uat' && env.SELECTED_TAG != null && SELECTED_TAG != "") {
+        sh "git checkout ${env.SELECTED_TAG}"
+      }
+      def img = docker.build("${appImgFullName}:${imgTag}", "${WORKSPACE}/cloudform")
+      img.push()
+
+      // echo "Removing docker image ${appImgFullName}:${imgTag}"
+      // sh "docker rmi ${appImgFullName}:${imgTag}"
+    }
+  } /* stage build dcloud */
+  stage('Build DCloud Docs') {
+    echo "Start building image [${docsImgFullName}:${imgTag}]"
+    docker.withRegistry("https://${imgRepoServerUrl}", "${imgRepoCred}") {
+      // Pull Docker Image first to use with --cache-from
+      // sh "docker pull ${appImgFullName}:${imgTag}"
+      if (envName != 'uat' && env.SELECTED_TAG != null && SELECTED_TAG != "") {
+        sh "git checkout ${env.SELECTED_TAG}"
+      }
+      def img = docker.build("${docsImgFullName}:${imgTag}", "${WORKSPACE}/docs")
+      img.push()
+
+      // echo "Removing docker image ${docsImgFullName}:${imgTag}"
+      // sh "docker rmi ${appImgFullName}:${imgTag}"
+    }
+  } /* stage build dcloud docs */
+}
+
+
+def prepareHelm(){
+  stage('Prepare Helm') {
+    dir(helmFullDir) {
+      withCredentials(
+      [[
+        $class: 'UsernamePasswordMultiBinding',
+        credentialsId: ocpCred,
+        usernameVariable: 'OC_USERNAME',
+        passwordVariable: 'OC_PASSWORD'
+      ]]){
+        // INITIALIZE HELM AND CHECK CONNECTION TO TILLER
+        env.HELM_HOME = ".helm"
+        // unused on helm3
+        // env.TILLER_NAMESPACE = ocpProject
+        // def helmServiceAccount = "tiller"
+        if (envName != 'dev') {
+          sh "oc login -u=$OC_USERNAME -p=$OC_PASSWORD ${ocpServer} --insecure-skip-tls-verify"
+          sh "oc project ${ocpProject}"
+        }
+        // sh "helm init --client-only --service-account ${helmServiceAccount}"
+        sh "helm version"
+        dir('dcloud'){
+          sh "helm dependency update"
+        }
+      }
+    }
+  }
+}
+
+
+def deployApp(){
+  stage('Deploy dcloud') {
+    dir(helmFullDir) {
+      withCredentials(
+      [[
+        $class: 'UsernamePasswordMultiBinding',
+        credentialsId: ocpCred,
+        usernameVariable: 'OC_USERNAME',
+        passwordVariable: 'OC_PASSWORD'
+      ]]){
+        if (envName != 'dev') {
+          if (envName != 'uat' && env.SELECTED_TAG != null && SELECTED_TAG != "") {
+            sh "git checkout ${env.SELECTED_TAG}"
+          }
+          sh "oc login -u=$OC_USERNAME -p=$OC_PASSWORD ${ocpServer} --insecure-skip-tls-verify"
+          sh "oc project ${ocpProject}"
+        }
+
+        def helmValuesFile = "values/values-dcloud-${envName}-${appFullName}.yaml"
+        def helmOptions = "--set-string \"collectstatic.image.repository=${appImgFullName},collectstatic.image.tag=${imgTag},image.repository=${appImgFullName},image.tag=${imgTag},env[0].value=${imgTag},env[1].value=${gitCommitHash},env[2].value=${currentDate}\""
+        sh "helm upgrade -i dcloud-${envName}-app -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${appFullName}-nginx.yaml"
+        helmOptions = "--set-string \"image.repository=${appNginxImgFullName},image.tag=${appNginxImgTag}\""
+        sh "helm upgrade -i dcloud-${envName}-app-nginx -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${sendmailFullName}.yaml"
+        helmOptions = "--set-string \"image.repository=${appImgFullName},image.tag=${imgTag}\""
+        sh "helm upgrade -i dcloud-${envName}-${sendmailFullName} -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${docsFullName}.yaml"
+        helmOptions = "--set-string \"collectstatic.image.repository=${docsImgFullName},collectstatic.image.tag=${imgTag},image.repository=${docsImgFullName},image.tag=${imgTag}\""
+        sh "helm upgrade -i dcloud-${envName}-${docsFullName} -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${docsFullName}-nginx.yaml"
+        helmOptions = "--set-string \"image.repository=${docsNginxImgFullName},image.tag=${docsNginxImgTag}\""
+        sh "helm upgrade -i dcloud-${envName}-${docsFullName}-nginx -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${passwordManagerFullName}.yaml"
+        helmOptions = "--set-string \"image.repository=${appImgFullName},image.tag=${imgTag},env[0].value=${imgTag},env[1].value=${gitCommitHash},env[2].value=${currentDate}\""
+        sh "helm upgrade -i dcloud-${envName}-${passwordManagerFullName} -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${celeryBeatFullName}.yaml"
+        helmOptions = "--set-string \"image.repository=${appImgFullName},image.tag=${imgTag},env[0].value=${imgTag},env[1].value=${gitCommitHash},env[2].value=${currentDate}\""
+        sh "helm upgrade -i dcloud-${envName}-${celeryBeatFullName} -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+
+        helmValuesFile = "values/values-dcloud-${envName}-${celeryWorkerFullName}.yaml"
+        helmOptions = "--set-string \"image.repository=${appImgFullName},image.tag=${imgTag},env[0].value=${imgTag},env[1].value=${gitCommitHash},env[2].value=${currentDate}\""
+        sh "helm upgrade -i dcloud-${envName}-${celeryWorkerFullName} -f ${helmValuesFile} ${helmOptions} --wait ${helmChartDir}"
+      }
+    }
+  } /* stage deploy service */
+}
+
+def tagProductionImage(){
+  stage('Tag Production Image') {
+    echo "Start tagging image from UAT to tag: ${imgTag}"
+    docker.withRegistry("https://${imgRepoServerUrl}", "${imgRepoCred}") {
+      sh """
+        docker pull ${appImgFullName}:uat
+        docker tag ${appImgFullName}:uat ${appImgFullName}:${imgTag}
+        docker pull ${docsImgFullName}:uat
+        docker tag ${docsImgFullName}:uat ${docsImgFullName}:${imgTag}
+        docker push ${appImgFullName}:${imgTag}
+        docker push ${docsImgFullName}:${imgTag}
+      """
+    }
+  }
+}
+
+def label = "master"
+node(label) {
+
+  // ALWAYS CHECKOUT CODE FIRST
+  stage('Clone repository') {
+    // CHECKOUT CODE REPO
+    scmVars = checkout scm
+  }
+
+  // CALL PREPARE FUNCTION
+  prepareVars()
+
+  switch(envName) {
+    case "dev":
+      // runOWASP()
+      // runSonarQube()
+      buildAndPushDockerImage()
+      prepareHelm()
+      deployApp()
+      break
+    case "uat":
+      // runOWASP()
+      runSonarQube()
+      buildAndPushDockerImage()
+      prepareHelm()
+      deployApp()
+      break
+    case "production":
+      // buildAndPushDockerImage()
+      tagProductionImage()
+      prepareHelm()
+      deployApp()
+      break
+  }
+
+  deleteDir()
+
+} /* node */

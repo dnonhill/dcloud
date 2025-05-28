@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% block doc_content %}
+<section id="home-section" class="doc-section">
+    {% if page.head %}
+        <h2 class="section-title">{{ page.head }}</h2>
+    {% endif %}
+    <div class="section-block">
+        {{ page.body|richtext }}
+    </div>
+</section>
+<!--//doc-section-->
+{% endblock %}

@@ -1,0 +1,6 @@
+- model: "jobcodes.FeatureToggle"
+  pk: 1
+  fields:
+    name: 'ptt job code'
+    code: 'PTT_JOB_CODE'
+    enable: false

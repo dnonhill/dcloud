@@ -1,0 +1,17 @@
+- model: mail.mailtemplate
+  pk: 21
+  fields:
+    template_name: mail/inventory_request_detail_error_or_not_found.html
+    signal_name: inventory_notfound_or_error
+    recipient: PTTDIGITAL-Dcloud-Admin@pttdigital.com
+    subject: 'Inventory name {{ inventory_name }} is request detail error or not found'
+    content: "<html>
+        <body>
+            <div>
+                <p>Dear Cloud Admin</p>
+                <p>Inventory list name {{ inventory_name }} is request details error or not found</p>
+                <p>Please check error detail</p>
+            </div>
+            <br/><br/>
+        </body>
+        </html>"

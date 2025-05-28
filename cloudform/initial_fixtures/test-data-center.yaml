@@ -1,0 +1,6 @@
+- model: projects.datacenter
+  pk: 99
+  fields:
+    name: "Test data center"
+    tenant: "pds"
+    available_resources: '["vm", "container-cluster", "other"]'

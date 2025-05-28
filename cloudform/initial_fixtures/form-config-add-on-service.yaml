@@ -1,0 +1,36 @@
+- model: form_config.formconfig
+  pk: 30
+  fields:
+    page: vm-request-form
+    field: add_on_service
+    sequence: 1
+    value: 'log_analyst_service'
+    display: 'Log Analyst Service'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 31
+  fields:
+    page: vm-request-form
+    field: add_on_service
+    sequence: 2
+    value: 'managed_service'
+    display: 'Managed Service'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 32
+  fields:
+    page: vm-request-form
+    field: add_on_service
+    sequence: 3
+    value: 'monitor_scan'
+    display: 'Monitor Service'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 33
+  fields:
+    page: vm-request-form
+    field: add_on_service
+    sequence: 4
+    value: 'va_scan_service'
+    display: 'VA Scan Service'
+    extra_fields: {}

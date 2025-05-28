@@ -1,0 +1,43 @@
+---
+version: "3.7"
+services:
+  postgres:
+    image: postgres:11.4
+    environment:
+      - POSTGRES_DB=cloudform
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:5.0.7
+    ports:
+      - "6379:6379"
+  dcloud:
+    build:
+      context: ../.
+    image: dcloud:latest
+    volumes:
+      - static_volume:/code/static/
+      - media_volume:/code/media/
+    expose:
+      - "8000"
+    # environment:
+    #   DJANGO_SETTINGS_MODULE: cloudform.settings.production
+    depends_on:
+      - postgres
+      - redis
+  nginx:
+    image: nginx:1.17.4-alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - static_volume:/code/static/
+      - media_volume:/code/media/
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - dcloud
+volumes:
+  static_volume:
+  media_volume:

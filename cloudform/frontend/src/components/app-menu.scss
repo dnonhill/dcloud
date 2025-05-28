@@ -1,0 +1,33 @@
+$info-color: #FF5E7C;
+
+#app-main-nav {
+  font-family: "Fira Sans";
+
+  #app-logo {
+    margin-top: -0.8em;
+    width: 6em;
+  }
+
+  .navbar-item {
+    &:hover { background: inherit;}
+    padding-top: 0.8em;
+    font-size: 0.9em;
+
+    &.active {
+      font-weight: bold;
+      color: $info-color;
+    }
+  }
+
+  .navbar-link {
+    background: inherit;
+    &:hover { background: inherit; }
+  }
+
+  .navbar-dropdown .navbar-item{
+    font-family: "Bai Jamjuri", sans-serif;
+    font-size: 1.0em;
+
+    color: rgb(54, 54, 54);
+  }
+}

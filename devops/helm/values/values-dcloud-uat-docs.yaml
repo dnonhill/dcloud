@@ -1,0 +1,164 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+collectstatic:
+  image:
+    repository: dcloudnexus-registry.pttdigital.com/dcloud/docs
+    tag: uat
+    pullPolicy: Always
+  volumeMounts:
+    - name: dcloud-uat-docs-static-volume
+      mountPath: /code/static/
+  volumes:
+    - name: dcloud-uat-docs-static-volume
+      persistentVolumeClaim:
+        claimName: dcloud-uat-docs-static-volume-storage
+  env:
+    - name: POSTGRES_DB
+      value: dcloud_docs
+    - name: POSTGRES_USER
+      value: dcloudadmin
+    - name: POSTGRES_HOST
+      value: dcloud-uat-db-postgresql
+    - name: DJANGO_SETTINGS_MODULE
+      value: docs.settings.production
+    - name: PREFIX_PATH
+      value: "/docs"
+    - name: TZ
+      value: 'Asia/Bangkok'
+  envFrom:
+    - secret:
+        name: dcloud-psql
+    - secret:
+        name: dcloud-secret-key
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/docs
+  tag: uat
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-uat-docs
+fullnameOverride: dcloud-uat-docs
+
+env:
+  - name: POSTGRES_DB
+    value: dcloud_docs
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: dcloud-uat-db-postgresql
+  - name: DJANGO_SETTINGS_MODULE
+    value: docs.settings.production
+  - name: PREFIX_PATH
+    value: "/docs"
+  - name: AUTH_LDAP_ENABLED
+    value: true
+  - name: AUTH_LDAP_SERVER_URI
+    value: "ldap://ldap.pttdigital.corp:389"
+  - name: AUTH_LDAP_BIND_DN
+    value: "cn=svccloudweb,ou=PTT Digital Appl Accounts,dc=pttdigital,dc=corp"
+  - name: AUTH_LDAP_USER_SEARCH_BASE_DN
+    value: "DC=pttdigital,DC=corp"
+  - name: AUTH_LDAP_USER_SEARCH_FILTER_STR
+    value: "(sAMAccountName=%(user)s)"
+  - name: AUTH_LDAP_GROUP_SEARCH_BASE_DN
+    value: "DC=pttdigital,DC=corp"
+  - name: AUTH_LDAP_GROUP_SEARCH_FILTER_STR
+    value: "(objectClass=group)"
+  - name: AUTH_LDAP_USER_FLAGS_BY_GROUP_IS_STAFF
+    value: 'CN=G-PDS InfraWebRequest SysAdmin,OU=Web Request form,OU=Other Accounts,DC=pttdigital,DC=corp'
+  - name: TZ
+    value: 'Asia/Bangkok'
+envFrom:
+  - secret:
+      name: dcloud-ldap-pttdigital
+  - secret:
+      name: dcloud-psql
+  - secret:
+      name: dcloud-secret-key
+
+volumeMounts:
+  - name: dcloud-uat-docs-static-volume
+    mountPath: /code/static
+  - name: dcloud-uat-docs-media-volume
+    mountPath: /code/media
+
+volumes:
+  - name: dcloud-uat-docs-static-volume
+    persistentVolumeClaim:
+      claimName: dcloud-uat-docs-static-volume-storage
+  - name: dcloud-uat-docs-media-volume
+    persistentVolumeClaim:
+      claimName: dcloud-uat-docs-media-volume-storage
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 8000
+      internalPort: 8000
+
+route:
+  enabled: false
+  routes:
+    - name: dcloud-docs-uat-route
+      spec:
+        host: dcloud-uat.pttdigital.com
+        path: /docs
+        to:
+          kind: Service
+          name: dcloud-uat-docs
+          weight: 100
+        port:
+          targetPort: app-svc
+        wildcardPolicy: None
+        # tls:
+        #   termination: edge
+        #   certificate: "CHANGEME"
+        #   key: |
+        #     CHANGEME
+        #   caCertificate: |
+        #     CHANGEME
+        #   insecureEdgeTerminationPolicy: Redirect
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3

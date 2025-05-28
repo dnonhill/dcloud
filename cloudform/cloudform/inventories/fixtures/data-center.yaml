@@ -1,0 +1,15 @@
+- model: projects.datacenter
+  pk: 1
+  fields:
+    name: "PTT Central"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 2
+  fields:
+    name: "PTT Digital for PTTGRP"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 3
+  fields:
+    name: "PTT Digital for PTTEP"
+    available_resources: '["vm", "container-cluster", "other"]'

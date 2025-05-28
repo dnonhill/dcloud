@@ -1,0 +1,16 @@
+{% extends "admin/change_form.html" %}
+
+{% if save_on_top %}{% block submit_buttons_top %}{% endblock %}{% endif %}
+
+{% block submit_buttons_bottom %}
+  <style>
+    .approved {
+      color: #4BB543;
+    }
+  </style>
+    <div class="submit-row">
+       <p class="deletelink-box">
+          <input type="submit" value="Roll back status" name="_roll-back-status">
+       </p>
+    </div>
+{% endblock %}

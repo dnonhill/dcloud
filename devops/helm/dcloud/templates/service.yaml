@@ -1,0 +1,31 @@
+{{- if .Values.service.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "app-deployment.fullname" . }}
+  labels:
+    app: {{ include "app-deployment.name" . }}
+    helm.sh/chart: {{ include "app-deployment.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- with .Values.service.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.service.type }}    # NodePort, ClusterIP, LoadBalancer, ExternalIP
+  ports:
+    {{- range .Values.service.ports }}
+    - name: {{ .name }}
+      protocol: {{ .protocol }}
+      port: {{ .externalPort }}
+      targetPort: {{ .internalPort }}
+      {{- if .nodePort }}
+      nodePort: {{ .nodePort }}
+      {{- end }}
+    {{- end }}
+  selector:
+    app: {{ include "app-deployment.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

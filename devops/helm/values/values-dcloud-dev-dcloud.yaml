@@ -1,0 +1,284 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+collectstatic:
+  image:
+    repository: registry.dclouddev.opsta.in.th/dcloud/dcloud
+    tag: dev
+    pullPolicy: Always
+  volumeMounts:
+    - name: dcloud-dev-app-static-volume
+      mountPath: /code/static/
+  volumes:
+    - name: dcloud-dev-app-static-volume
+      persistentVolumeClaim:
+        claimName: dcloud-dev-app-static-volume-storage
+  env:
+    - name: POSTGRES_DB
+      value: dcloud
+    - name: POSTGRES_USER
+      value: dcloudadmin
+    - name: POSTGRES_HOST
+      value: dcloud-dev-db-postgresql
+    - name: TZ
+      value: 'Asia/Bangkok'
+  envFrom:
+    - secret:
+        name: dcloud-psql
+  resources:
+    requests:
+      cpu: 100m
+      memory: 50Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+image:
+  repository: registry.dclouddev.opsta.in.th/dcloud/dcloud
+  tag: dev
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+nameOverride: dcloud-dev-app
+fullnameOverride: dcloud-dev-app
+
+env:
+  - name: DCLOUD_VERSION
+    value: "undefined"
+  - name: DCLOUD_GIT_HASH
+    value: "undefined"
+  - name: DCLOUD_DEPLOY_DATE
+    value: "undefined"
+  - name: AWX_API_HOST
+    value: "http://dcloudawx-dev.opsta.in.th"
+  - name: POSTGRES_DB
+    value: dcloud
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: dcloud-dev-db-postgresql
+  - name: DCLOUD_FORCE_SECURE_REQUEST
+    value: true
+  - name: EMAIL_ENABLED
+    value: true
+  - name: EMAIL_BACKEND
+    value: "smtp"
+  - name: EMAIL_HOST
+    value: "app2smtp.pttgrp.corp"
+  - name: EMAIL_PORT
+    value: "25"
+  - name: EMAIL_HOST_USER
+    value: ""
+  - name: EMAIL_HOST_PASSWORD
+    value: ""
+  - name: SENDMAIL_SENDER
+    value: pttdigital-cloudadmin@pttdigital.com
+  - name: REDIS_ENABLED
+    value: true
+  - name: REDIS_HOSTS
+    value: "dcloud-dev-app-redis-master"
+  - name: GRAYLOG_HOST
+    value: "dcloudgraylog.pttdigital.com"
+  - name: GRAYLOG_HANDLER_CLASS
+    value: "graypy.handler.GELFTCPHandler"
+  - name: ELASTICSEARCH_HOST
+    value: "dcloud-dev-elasticsearch"
+  - name: ELASTICSEARCH_PORT
+    value: "9200"
+  - name: VCENTER_URL
+    value: "https://vcenter.site2.opsta.in.th"
+  - name: TZ
+    value: 'Asia/Bangkok'
+envFrom:
+  - secret:
+      name: dcloud-psql
+  - secret:
+      name: dcloud-dev-awx-automation
+  - secret:
+      name: dcloud-secret-key
+  - secret:
+      name: dcloud-celery
+
+volumeMounts:
+  - name: dcloud-dev-app-media-volume
+    mountPath: /code/media
+  - name: dcloud-dev-app-static-volume
+    mountPath: /code/static
+
+# Make sure to create pvc on destination first
+volumes:
+  - name: dcloud-dev-app-media-volume
+    persistentVolumeClaim:
+      claimName: dcloud-dev-app-media-volume-storage
+  - name: dcloud-dev-app-static-volume
+    persistentVolumeClaim:
+      claimName: dcloud-dev-app-static-volume-storage
+
+containerPorts:
+  - 8000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 2
+    memory: 4Gi
+
+service:
+  enabled: true
+  type: ClusterIP
+  annotation: {}
+  ports:
+    - name: app-svc
+      protocol: TCP
+      externalPort: 8000
+      internalPort: 8000
+
+# route:
+#   enabled: true
+#   routes:
+#     - name: dcloud-dev-websocket-route
+#       spec:
+#         host: dclouddev.opsta.in.th
+#         path: /ws
+#         to:
+#           kind: Service
+#           name: dcloud-dev-app
+#           weight: 100
+#         port:
+#           targetPort: app-svc
+#         wildcardPolicy: None
+        # tls:
+        #   termination: edge
+        #   certificate: "CHANGEME"
+        #   key: |
+        #     CHANGEME
+        #   caCertificate: |
+        #     CHANGEME
+        #   insecureEdgeTerminationPolicy: Redirect
+
+# healthCheck:
+#   enabled: false
+#   readinessProbe:
+#     httpGet:
+#       path: /ready
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+#   livenessProbe:
+#     httpGet:
+#       path: /health
+#       port: 80
+#     initialDelaySeconds: 0
+#     timeoutSeconds: 1
+#     periodSeconds: 10
+#     successThreshold: 1
+#     failureThreshold: 3
+
+# sidecarContainers:
+#   - name: sendmail
+#     image:
+#       repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+#       tag: uat
+#       pullPolicy: Always
+#     command:
+#       - /code/scripts/sendmail.sh
+#     # args:
+#     env:
+#     - name: POSTGRES_DB
+#       value: dcloud
+#     - name: POSTGRES_USER
+#       value: dcloudadmin
+#     - name: POSTGRES_HOST
+#       value: dcloud-uat-db-postgresql
+#     - name: LISTEN_PORT
+#       value: 8001
+#     - name: EMAIL_ENABLED
+#       value: true
+#     - name: EMAIL_BACKEND
+#       value: "smtp"
+#     - name: EMAIL_HOST
+#       value: "app2smtp.pttgrp.corp"
+#     - name: EMAIL_PORT
+#       value: "25"
+#     - name: EMAIL_HOST_USER
+#       value: ""
+#     - name: EMAIL_HOST_PASSWORD
+#       value: ""
+#     - name: SENDMAIL_SENDER
+#       value: pttdigital-cloudadmin@pttdigital.com
+#     - name: PYTHONUNBUFFERED
+#       value: "yes"
+#     - name: SENDMAIL_DAEMON
+#       value: "yes"
+#     - name: TZ
+#       value: 'Asia/Bangkok'
+#     envFrom:
+#       - secret:
+#           name: dcloud-psql
+#     containerPorts:
+#       - 8001
+#     resources:
+#       requests:
+#         cpu: 100m
+#         memory: 50Mi
+#       limits:
+#         cpu: 100m
+#         memory: 500Mi
+
+    # healthCheck:
+    #   enabled: false
+    #   readinessProbe:
+    #     httpGet:
+    #       path: /ready
+    #       port: 80
+    #     initialDelaySeconds: 0
+    #     timeoutSeconds: 1
+    #     periodSeconds: 10
+    #     successThreshold: 1
+    #     failureThreshold: 3
+    #   livenessProbe:
+    #     httpGet:
+    #       path: /health
+    #       port: 80
+    #     initialDelaySeconds: 0
+    #     timeoutSeconds: 1
+    #     periodSeconds: 10
+    #     successThreshold: 1
+    #     failureThreshold: 3
+
+# Chart values https://github.com/helm/charts/blob/master/stable/redis/values.yaml
+redis:
+  enabled: true
+  usePassword: false
+  serviceAccount:
+    name: dcloud
+  securityContext:
+    enabled: true
+    fsGroup: 1001
+    runAsUser: 1001
+  cluster:
+    enabled: false
+  sentinel:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+      size: 8Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

@@ -1,0 +1,37 @@
+# python
+__pycache__/
+.py[cod]
+*$py.class
+
+# mypy
+.mypy_cache/
+
+# docker volume
+postgres/
+
+# intellij
+.idea
+*.iml
+
+# vscode
+.vscode
+
+# jetbrain
+.idea
+*.iml
+
+# MacOS
+.DS_Store
+
+apacheds
+
+# django file upload
+cloudform/media/
+cloudform/static/
+cloudform/.python-version
+
+### DevOps ###
+devops/helm/*/charts/*
+
+# Celery
+cloudform/celerybeat.pid

@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
+    container_name: es01
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+  redis:
+    image: "redis:alpine"
+    ports:
+      - 6379:6379
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.12.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - es01
+    links:
+      - es01
+networks:
+  default:
+    external:
+      name: dcloud

@@ -1,0 +1,211 @@
+- model: tasks.tasktemplate
+  pk: 2
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:11:38.684203+00:00
+    updated_at: 2020-03-19 04:33:20.588756+00:00
+    active_flag: true
+    resource_type: vm
+    action: create
+    task_sequence: 1
+    name: Create Virtual Machine Script
+    script_name: '22'
+    script_variables: >-
+      {
+        "vm_name":"<<fill hostname here>>",
+        "cfme_vm_password":"<<fill password>>",
+        "__auto__": "========================================",
+        "cfme_vm_cpus":"{{request.specification.cpu}}",
+        "cfme_vm_memory_mb":"{{request.specification.memory_mb}}",
+        "cfme_storage_tier":"{{request.specification.storage_tier}}",
+        "cfme_protection_lv":"{{request.specification.protection_level}}",
+        "cfme_vm_disk_gb_option1":"{{request.specification.os_disk}}",
+        "cfme_vm_disk_gb_option2":"{{request.specification.data_disk_1_size}}",
+        "cfme_vm_disk_gb_option3":"{{request.specification.data_disk_2_size}}",
+        "vm_template":"{{request.specification.os}}",
+        "vm_template_type":"{{request.specification.os_type}}",
+        "network_environment":"{{request.specification.environment}}",
+        "network_zone":"{{request.specification.network_zone}}",
+        "network_tenant":"{{ticket.data_center.tenant}}",
+        "vm_datacenter":"{{ticket.data_center.name}}",
+        "vm_owner_name":"{{ticket.requestor.full_name}}",
+        "vm_owner_email":"{{ticket.requestor.email}}",
+        "vm_application":"{{ticket.application.name}}",
+        "vm_application_supporter_name":"{{ticket.application.supporter_name}}",
+        "vm_application_supporter_email":"{{ticket.application.supporter_email}}",
+        "project":"{{ticket.project.name}}"
+      }
+- model: tasks.tasktemplate
+  pk: 3
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:12:48.522863+00:00
+    updated_at: 2019-11-28 01:12:48.522887+00:00
+    active_flag: true
+    resource_type: vm
+    action: create
+    task_sequence: 2
+    name: Verify Antivirus installation
+    script_name: ''
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 4
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:26:46.640040+00:00
+    updated_at: 2019-11-28 01:26:46.640059+00:00
+    active_flag: true
+    resource_type: vm
+    action: create
+    task_sequence: 3
+    name: Verify Patch update configuration
+    script_name: ''
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 5
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:27:21.600680+00:00
+    updated_at: 2020-04-08 04:40:07.765618+00:00
+    active_flag: true
+    resource_type: container-cluster
+    action: create
+    task_sequence: 1
+    name: Create OpenShift Project
+    script_name: '16'
+    script_variables: >-
+      {
+        "oc_project_name": "{{request.specification.namespace}}",
+        "oc_cluster": "{{ticket.data_center.tenant}}",
+        "oc_cpu": "{{request.specification.cpu}}",
+        "oc_memory": "{{request.specification.memory}}",
+        "oc_storage": "{{request.specification.main_storage}}",
+        "requester": "{{request.specification.requestor}}"
+      }
+- model: tasks.tasktemplate
+  pk: 6
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:27:50.136005+00:00
+    updated_at: 2019-11-28 01:27:50.136039+00:00
+    active_flag: true
+    resource_type: container-cluster
+    action: create
+    task_sequence: 2
+    name: Add Openshift project members
+    script_name: ''
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 7
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:11:38.684203+00:00
+    updated_at: 2019-11-28 01:11:38.684244+00:00
+    active_flag: true
+    resource_type: vm
+    action: update
+    task_sequence: 1
+    name: Update Virtual Machine Script
+    script_name: a
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 8
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:12:48.522863+00:00
+    updated_at: 2019-11-28 01:12:48.522887+00:00
+    active_flag: true
+    resource_type: vm
+    action: update
+    task_sequence: 2
+    name: Verify disk partitioning and os disk extension requirement
+    script_name: ''
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 9
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:11:38.684203+00:00
+    updated_at: 2020-03-19 04:33:42.902173+00:00
+    active_flag: true
+    resource_type: vm
+    action: delete
+    task_sequence: 1
+    name: Delete Virtual Machine Script
+    script_name: '23'
+    script_variables: '{"vm_del": "{{resource.name}}"}'
+- model: tasks.tasktemplate
+  pk: 10
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:27:21.600680+00:00
+    updated_at: 2020-04-08 04:40:36.483330+00:00
+    active_flag: true
+    resource_type: container-cluster
+    action: update
+    task_sequence: 1
+    name: Modify Quota OpenShift Project
+    script_name: '18'
+    script_variables: >-
+      {
+        "oc_project_name": "{{resource.details.namespace}}",
+        "oc_cluster": "{{ticket.data_center.tenant}}",
+        "oc_new_cpu": "{{request.specification.cpu}}",
+        "oc_new_memory": "{{request.specification.memory}}",
+        "oc_storage": "{{request.specification.main_storage}}"
+      }
+- model: tasks.tasktemplate
+  pk: 12
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:27:50.136005+00:00
+    updated_at: 2019-11-28 01:27:50.136039+00:00
+    active_flag: true
+    resource_type: container-cluster
+    action: update
+    task_sequence: 2
+    name: Add Openshift project member
+    script_name: ''
+    script_variables: '{}'
+- model: tasks.tasktemplate
+  pk: 13
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:27:21.600680+00:00
+    updated_at: 2020-04-08 04:40:47.864634+00:00
+    active_flag: true
+    resource_type: container-cluster
+    action: delete
+    task_sequence: 1
+    name: Retire OpenShift Project
+    script_name: '19'
+    script_variables: >-
+      {
+        "project_del": "{{resource.details.namespace}}",
+        "oc_cluster": "{{ticket.data_center.tenant}}"
+      }
+- model: tasks.tasktemplate
+  pk: 15
+  fields:
+    created_by: 1000
+    updated_by: 1000
+    created_at: 2019-11-28 01:26:46.640040+00:00
+    updated_at: 2019-11-28 01:26:46.640059+00:00
+    active_flag: true
+    resource_type: vm
+    action: create
+    task_sequence: 4
+    name: Verify disk partitioning and os disk extension requirement
+    script_name: ''
+    script_variables: '{}'

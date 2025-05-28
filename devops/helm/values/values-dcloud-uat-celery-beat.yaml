@@ -1,0 +1,111 @@
+serviceAccountName: dcloud
+
+securityContext:
+  runAsUser: 1001
+
+replicaCount: 1
+
+image:
+  repository: dcloudnexus-registry.pttdigital.com/dcloud/dcloud
+  tag: uat
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: registry-irrnexus-cred
+
+command:
+  - celery
+  - -A
+  - cloudform
+  - beat
+  - -l
+  - INFO
+  - --scheduler
+  - django_celery_beat.schedulers:DatabaseScheduler
+
+nameOverride: dcloud-uat-celery-beat
+fullnameOverride: dcloud-uat-celery-beat
+
+env:
+  - name: DCLOUD_VERSION
+    value: "undefined"
+  - name: DCLOUD_GIT_HASH
+    value: "undefined"
+  - name: DCLOUD_DEPLOY_DATE
+    value: "undefined"
+  - name: AWX_API_HOST
+    value: "http://dcloudawx-uat.pttdigital.com"
+  - name: POSTGRES_DB
+    value: dcloud
+  - name: POSTGRES_USER
+    value: dcloudadmin
+  - name: POSTGRES_HOST
+    value: dcloud-uat-db-postgresql
+  - name: DCLOUD_FORCE_SECURE_REQUEST
+    value: true
+  - name: EMAIL_ENABLED
+    value: true
+  - name: EMAIL_BACKEND
+    value: "smtp"
+  - name: EMAIL_HOST
+    value: "app2smtp.pttgrp.corp"
+  - name: EMAIL_PORT
+    value: "25"
+  - name: EMAIL_HOST_USER
+    value: ""
+  - name: EMAIL_HOST_PASSWORD
+    value: ""
+  - name: SENDMAIL_SENDER
+    value: pttdigital-cloudadmin@pttdigital.com
+  - name: REDIS_ENABLED
+    value: true
+  - name: REDIS_HOSTS
+    value: "dcloud-uat-app-redis-master"
+  - name: REDIS_URL
+    value: "redis://dcloud-uat-app-redis-master:6379"
+  - name: GRAYLOG_HOST
+    value: "dcloudgraylog.pttdigital.com"
+  - name: GRAYLOG_HANDLER_CLASS
+    value: "graypy.handler.GELFTCPHandler"
+  - name: ELASTICSEARCH_HOST
+    value: "dcloud-uat-elasticsearch"
+  - name: ELASTICSEARCH_PORT
+    value: "9200"
+  - name: API_URL
+    value: "http://dcloud-uat-app:8000"
+  - name: VCENTER_URL
+    value: "https://grp-cfvc-p01.pttgrp.corp"
+  - name: TZ
+    value: 'Asia/Bangkok'
+envFrom:
+  - secret:
+      name: dcloud-psql
+  - secret:
+      name: dcloud-uat-awx-automation
+  - secret:
+      name: dcloud-secret-key
+  - secret:
+      name: dcloud-celery
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 50Mi
+  limits:
+    cpu: 400m
+    memory: 512Mi
+
+healthCheck:
+  enabled: true
+  readinessProbe: null
+  livenessProbe:
+    exec:
+      command:
+        - sh
+        - '-c'
+        - celery -A cloudform status|| exit 1
+    initialDelaySeconds: 5
+    timeoutSeconds: 60
+    periodSeconds: 300
+    successThreshold: 1
+    failureThreshold: 3

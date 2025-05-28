@@ -1,0 +1,282 @@
+- model: form_config.formconfig
+  pk: 1
+  fields:
+    page: vm-request-form
+    field: storage_tier
+    sequence: 1
+    value: '1_bronze'
+    display: 'Normal - General purpose'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 2
+  fields:
+    page: vm-request-form
+    field: storage_tier
+    sequence: 2
+    value: '2_silver'
+    display: 'Fast - Optimized for database'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 3
+  fields:
+    page: vm-request-form
+    field: storage_tier
+    sequence: 3
+    value: '3_gold'
+    display: 'High speed - High traffic database'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 4
+  fields:
+    page: vm-request-form
+    field: protection_level
+    sequence: 1
+    value: 'p4'
+    display: 'P4 - Backup Daily, No DR'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 5
+  fields:
+    page: vm-request-form
+    field: protection_level
+    sequence: 2
+    value: 'p3'
+    display: 'P3 - Backup Daily, with DR'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 6
+  fields:
+    page: vm-request-form
+    field: protection_level
+    sequence: 3
+    value: 'p2'
+    display: 'P2 - Backup every 4 hours, with DR'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 7
+  fields:
+    page: vm-request-form
+    field: protection_level
+    sequence: 4
+    value: 'p1'
+    display: 'P1 - Backup every 1 hours, with DR'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 8
+  fields:
+    page: vm-request-form
+    field: protection_level
+    sequence: 5
+    value: 'p0'
+    display: 'P0 - Backup every 30 minutes, with DR (PTTEP Only)'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 9
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 1
+    value: 'Centos7'
+    display: 'CentOS 7'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "centos"
+- model: form_config.formconfig
+  pk: 10
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 2
+    value: 'Centos7-PTTEP'
+    display: 'CentOS 7 PTTEP'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "centos"
+- model: form_config.formconfig
+  pk: 11
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 3
+    value: 'RHEL 7.4'
+    display: 'RHEL 7.4'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "redhat"
+- model: form_config.formconfig
+  pk: 12
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 4
+    value: 'RHEL 7.6'
+    display: 'RHEL 7.6'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "redhat"
+- model: form_config.formconfig
+  pk: 13
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 5
+    value: 'SUSE for SAP_SP3'
+    display: 'SUSE for SAP_SP3'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "suse"
+- model: form_config.formconfig
+  pk: 14
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 6
+    value: 'SUSE for SAP_SP4_11'
+    display: 'SUSE for SAP_SP4_11'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "suse"
+- model: form_config.formconfig
+  pk: 15
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 7
+    value: 'Ubuntu 16.04'
+    display: 'Ubunut 16.04'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "ubuntu"
+- model: form_config.formconfig
+  pk: 16
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 8
+    value: 'Ubuntu 18.04'
+    display: 'Ubunut 18.04'
+    extra_fields:
+      osDisk: 50
+      osType: "linux"
+      distro: "ubuntu"
+- model: form_config.formconfig
+  pk: 17
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 9
+    value: 'Windows 2016'
+    display: 'Windows Server 2016'
+    extra_fields:
+      osDisk: 100
+      osType: "windows"
+      distro: null
+- model: form_config.formconfig
+  pk: 18
+  fields:
+    page: vm-request-form
+    field: os
+    sequence: 10
+    value: 'Windows 2019'
+    display: 'Windows Server 2019'
+    extra_fields:
+      osDisk: 100
+      osType: "windows"
+      distro: null
+- model: form_config.formconfig
+  pk: 19
+  fields:
+    page: vm-request-form
+    field: network_zone
+    sequence: 1
+    value: 'database'
+    display: 'No internet connection (Database/Internal Zone)'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 20
+  fields:
+    page: vm-request-form
+    field: network_zone
+    sequence: 2
+    value: 'application'
+    display: 'Enable outbound internet connection (Application Zone)'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 21
+  fields:
+    page: vm-request-form
+    field: network_zone
+    sequence: 3
+    value: 'dmz'
+    display: 'Enable both inbound and outbound internet connection (Web/DMZ Zone)'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 22
+  fields:
+    page: vm-request-form
+    field: database_engine
+    sequence: 1
+    value: 'Microsoft SQL Server 2016'
+    display: 'Microsoft SQL Server 2016'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 23
+  fields:
+    page: vm-request-form
+    field: database_engine
+    sequence: 2
+    value: 'Microsoft SQL Server 2017'
+    display: 'Microsoft SQL Server 2017'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 24
+  fields:
+    page: vm-request-form
+    field: database_engine
+    sequence: 3
+    value: 'Microsoft SQL Server 2019'
+    display: 'Microsoft SQL Server 2019'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 25
+  fields:
+    page: vm-request-form
+    field: environment
+    sequence: 1
+    value: 'Development / PoC'
+    display: 'Development / PoC'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 26
+  fields:
+    page: vm-request-form
+    field: environment
+    sequence: 3
+    value: 'Test'
+    display: 'Test'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 27
+  fields:
+    page: vm-request-form
+    field: environment
+    sequence: 3
+    value: 'Quality Assurance'
+    display: 'Quality Assurance'
+    extra_fields: {}
+- model: form_config.formconfig
+  pk: 28
+  fields:
+    page: vm-request-form
+    field: environment
+    sequence: 3
+    value: 'Production'
+    display: 'Production'
+    extra_fields: {}

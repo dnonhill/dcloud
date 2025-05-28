@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+    dcloud_url: "http://localhost:8000"
+    dcloud_overdue_tickets_alert_url: "{{ dcloud_url }}/alerts/overdue-tickets/"
+    dcloud_awx_hook_secret: s3cr3t
+  tasks:
+    - name: overdue alerts
+      uri:
+        url: "{{ dcloud_overdue_tickets_alert_url }}"
+        method: POST
+        headers:
+          AWX_API_HOOK_SECRET: "{{ dcloud_awx_hook_secret }}"
+      status_code:
+        - 202
+        - 204

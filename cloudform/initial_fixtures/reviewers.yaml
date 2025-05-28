@@ -1,0 +1,4 @@
+- model: reviews.reviewer
+  pk: 1
+  fields:
+    user: 2002

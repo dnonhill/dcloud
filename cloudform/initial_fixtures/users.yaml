@@ -1,0 +1,89 @@
+- model: users.User
+  pk: 1000
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: cloud001
+    first_name: "Cloud"
+    last_name: "Strife"
+    email: pitsanu+cloud001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [1000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1001
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: aprv001
+    first_name: "Pitsanu"
+    last_name: "Sw"
+    email: pitsanu+aprv001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [2000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1002
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: admin001
+    first_name: "Kajornthep"
+    last_name: "Pi"
+    email: pitsanu+admin001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [3000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 1003
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: req001
+    first_name: "Tansinee"
+    last_name: "Tor"
+    email: pitsanu+req001@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 2001
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: aprv002
+    first_name: "Lertwut"
+    last_name: "Khan"
+    email: pitsanu+aprv002@thezouth.com
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [2000, 4000]
+    user_permissions: []
+
+- model: users.User
+  pk: 2002
+  fields:
+    password: pbkdf2_sha256$150000$77o9SOibzz2Q$2zmAdOA1M/TaFg8abMjg2k1vUh0pyjepdMcgmWlrIaE=
+    is_superuser: false
+    username: rev001
+    first_name: "Leanne"
+    last_name: "Graham"
+    email: leanne+rev001@odds.team
+    is_staff: false
+    is_active: true
+    date_joined: 2019-07-17 08:07:45+00:00
+    groups: [5000]
+    user_permissions: []

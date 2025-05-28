@@ -1,0 +1,259 @@
+- model: mail.mailtemplate
+  pk: 13
+  fields:
+    template_name: mail/reviewer.ticket.feedback_applied.html
+    signal_name: requestor_feedback_applied
+    recipient: PTTDIGITAL-Dcloud-Reviewer@pttdigital.com
+    subject: 'DCloud: Ticket {{ ticket_no }} is feedback applied'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear {{ reviewer_full_name }}</p>
+          <p>Ticket {{ ticket_no }} is feedback applied by {{ requestor_full_name }}</p>
+          <p>Please click here to view the detail <a href=\"{{ review_url }}\">{{ review_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 {{ reviewer_full_name }}</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e44\u0e14\u0e49\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07\u0e15\u0e32\u0e21\u0e04\u0e33\u0e41\u0e19\u0e30\u0e19\u0e33</p>
+          <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ review_url }}\">{{ review_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+
+- model: mail.mailtemplate
+  pk: 14
+  fields:
+    template_name: mail/reviewer.commented.ticket.html
+    signal_name: reviewer_ticket_commented
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was commented'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear {{ requestor_full_name }}</p>
+          <p>Ticket {{ ticket_no }} has been commented by {{ reviewer_full_name }}</p>
+          <p>
+              The reason to reject is:<br/>
+              <pre>{{ review_note }}</pre>
+          </p>
+          <p>Please click here to view the detail <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 {{ requestor_full_name }}</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e21\u0e35\u0e01\u0e32\u0e23\u0e40\u0e40\u0e2a\u0e14\u0e07\u0e04\u0e27\u0e32\u0e21\u0e04\u0e34\u0e14\u0e40\u0e2b\u0e47\u0e19</p>
+          <p>
+              \u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07\u0e08\u0e32\u0e01:<br/>
+              <pre>{{ review_note }}</pre>
+          </p>
+          <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+
+- model: mail.mailtemplate
+  pk: 15
+  fields:
+    template_name: mail/reviewer.rejected.ticket.html
+    signal_name: reviewer_ticket_rejected
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was rejected'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear {{ requestor_full_name }}</p>
+          <p>Ticket {{ ticket_no }} has been rejected by {{ reviewer_full_name }}</p>
+          <p>
+              The reason to reject is:<br/>
+              <pre>{{ review_note }}</pre>
+          </p>
+          <p>Please click here to view the detail <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 {{ requestor_full_name }}</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e16\u0e39\u0e01\u0e1b\u0e0f\u0e34\u0e40\u0e2a\u0e18</p>
+          <p>
+              \u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07\u0e08\u0e32\u0e01:<br/>
+              <pre>{{ review_note }}</pre>
+          </p>
+          <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+
+- model: mail.mailtemplate
+  pk: 16
+  fields:
+    template_name: mail/reviewer.approved_requestor.ticket.html
+    signal_name: reviewer_ticket_reviewed
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was reviewed'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear {{ requestor_full_name }}</p>
+          <p>Ticket {{ ticket_no }} has been reviewed by {{ reviewer_full_name }} We are processing your request. Please click
+              here to view your status</p>
+          <p><a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 {{ requestor_full_name }}</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e1c\u0e48\u0e32\u0e19\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e01\u0e32\u0e23 \u0e02\u0e31\u0e49\u0e19\u0e15\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e44\u0e1b\u0e08\u0e30\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e08\u0e32\u0e23\u0e13\u0e32
+              \u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d</p>
+          <p><a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+
+- model: mail.mailtemplate
+  pk: 17
+  fields:
+    template_name: mail/reviewer.approved_approver.ticket.html
+    signal_name: reviewer_ticket_reviewed
+    recipient: '{{approver_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} is waiting for your approval'
+    content: "<html>
+        <head>
+            <title></title>
+        </head>
+        <body>
+        <div>
+            <p>Dear {{ approver_full_name }}</p>
+            <p>Ticket {{ ticket_no }} was created and waiting for your approval. Please click here to view detail.</p>
+            <p>(<a href=\"{{ approvement_url }}\">{{ approvement_url }}</a>)</p>
+            <p>Remark: The cost for your approved resources will be charged to your Department/Company</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div>
+            <p>\u0e40\u0e23\u0e35\u0e22\u0e19 {{ approver_full_name }}</p>
+            <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e08\u0e32\u0e23\u0e13\u0e32\u0e08\u0e32\u0e01\u0e17\u0e48\u0e32\u0e19 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14</p>
+            <p><a href=\"{{ approvement_url }}\">{{ approvement_url }}</a></p>
+            <p>\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38: \u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e17\u0e35\u0e48\u0e40\u0e01\u0e34\u0e14\u0e02\u0e36\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19resources \u0e17\u0e35\u0e48\u0e17\u0e48\u0e32\u0e19\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e08\u0e30\u0e16\u0e39\u0e01\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e41\u0e1c\u0e19\u0e01\u002f\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17 \u0e02\u0e2d\u0e07\u0e17\u0e48\u0e32\u0e19</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        </body>
+        </html>"
+
+- model: mail.mailtemplate
+  pk: 18
+  fields:
+    template_name: mail/ticket.approved_approve_next.ticket.html
+    signal_name: ticket_next_level_approved
+    recipient: '{{approver_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} is waiting for your approval'
+    content: "<html>
+        <head>
+            <title></title>
+        </head>
+        <body>
+        <div>
+            <p>Dear {{ approver_full_name }}</p>
+            <p>Ticket {{ ticket_no }} was created and waiting for your approval. Please click here to view detail.</p>
+            <p>(<a href=\"{{ approvement_url }}\">{{ approvement_url }}</a>)</p>
+            <p>Remark: The cost for your approved resources will be charged to your Department/Company</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div>
+            <p>\u0e40\u0e23\u0e35\u0e22\u0e19 {{ approver_full_name }}</p>
+            <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e08\u0e32\u0e23\u0e13\u0e32\u0e08\u0e32\u0e01\u0e17\u0e48\u0e32\u0e19 \u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14</p>
+            <p><a href=\"{{ approvement_url }}\">{{ approvement_url }}</a></p>
+            <p>\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38: \u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e17\u0e35\u0e48\u0e40\u0e01\u0e34\u0e14\u0e02\u0e36\u0e49\u0e19\u0e43\u0e19\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19resources \u0e17\u0e35\u0e48\u0e17\u0e48\u0e32\u0e19\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e08\u0e30\u0e16\u0e39\u0e01\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e41\u0e1c\u0e19\u0e01\u002f\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17 \u0e02\u0e2d\u0e07\u0e17\u0e48\u0e32\u0e19</p>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        </body>
+        </html>"
+
+- model: mail.mailtemplate
+  pk: 19
+  fields:
+    template_name: mail/reviewer.ticket.feedback_applied.requestor.html
+    signal_name: requestor_feedback_applied
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} has been updated.'
+    content: "<html>
+        <body>
+        <div>
+            <p>Dear {{ requestor_full_name }}</p>
+            <p>We have received your ticket as Ticket NO: {{ ticket_no }} has been updated.</p>
+            <p>Please click here to view the detail <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+        </div>
+        <br/><br/>
+        <div>
+            <p>\u0e40\u0e23\u0e35\u0e22\u0e19 {{ requestor_full_name }}</p>
+            <p>\u0e23\u0e30\u0e1a\u0e1a\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e17\u0e35\u0e48\u0e17\u0e33\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e08\u0e32\u0e01\u0e17\u0e48\u0e32\u0e19\u0e41\u0e25\u0e49\u0e27</p>
+            <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+        </div>
+        </body>
+        </html>"
+
+- model: mail.mailtemplate
+  pk: 1
+  fields:
+    template_name: mail/reviewer.ticket.request.html
+    signal_name: requestor_waitting_review
+    recipient: 'PTTDIGITAL-Dcloud-Reviewer@pttdigital.com'
+    subject: 'DCloud: Ticket {{ ticket_no }} is waiting for your approval'
+    content: "<html>
+      <body>
+      <div>
+          <p>Dear Reviewer</p>
+          <p>Ticket {{ ticket.ticket_no }} was created and waiting for your approval. Please click here to view detail.</p>
+          <p>Please click here to view the detail <a href=\"{{ review_url }}\">{{ review_url }}</a></p>
+      </div>
+      <br/><br/>
+      <div>
+          <p>\u0E40\u0E23\u0E35\u0E22\u0E19 Reviewer</p>
+          <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48
+          {{ ticket_no }} \u0e01\u0e33\u0e25\u0e31\u0e07\u0e23\u0e2d\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e08\u0e32\u0e23\u0e13\u0e32\u0e08\u0e32\u0e01\u0e17\u0e48\u0e32\u0e19</p>
+          <p>\u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14 <a href=\"{{ review_url }}\">{{ review_url }}</a></p>
+      </div>
+      </body>
+      </html>"
+- model: mail.mailtemplate
+  pk: 2
+  fields:
+    template_name: mail/ticket.submitted.requestor.html
+    signal_name: requestor_waitting_review
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ticket_no}} was created'
+    content: "<html>\r\n<head>\r\n\t<title></title>\r\n</head>\r\n<body>\r\n<p>Dear
+      {{ requestor_full_name }}</p>\r\n\r\n<p>We have received your ticket as Ticket
+      NO: {{ ticket_no }}.
+      Please click here to view detail.</p>\r\n\r\n<p><a href=\"{{ ticket_url }}?username={{
+      requestor.username }}&amp;domain={{ requestor.domain }}\">{{ ticket_url }}</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>\u0E40\u0E23\u0E35\u0E22\u0E19
+      {{ requestor_full_name }}</p>\r\n\r\n<p>\u0E23\u0E30\u0E1A\u0E1A\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48
+      {{ ticket_no }} \u0E01\u0E23\u0E38\u0E13\u0E32\u0E04\u0E25\u0E34\u0E4A\u0E01\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E04\u0E33\u0E23\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19</p>\r\n\r\n<p><a
+      href=\"{{ ticket_url }}?username={{ requestor.username }}&amp;domain={{ requestor.domain
+      }}\">{{ ticket_url }}</a></p>\r\n</body>\r\n</html>"
+
+- model: mail.mailtemplate
+  pk: 20
+  fields:
+    template_name: mail/approver.approved.html
+    signal_name: approver_approved
+    recipient: '{{requestor_email}}'
+    subject: 'DCloud: Ticket {{ ticket_no }} was approved.'
+    content: "<html>
+        <body>
+        <div>
+            <p>Dear {{ requestor_full_name }}</p>
+            <p>Ticket {{ ticket_no }} has been approved by {{ approver_full_name }} and have next level approve by {{ next_approver_full_name }}
+                here to view your status</p>
+            <p><a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+        </div>
+        <br/><br/>
+        <div>
+            <p>\u0e40\u0e23\u0e35\u0e22\u0e19 {{ requestor_full_name }}</p>
+            <p>\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 {{ ticket_no }} \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e42\u0e14\u0e22 {{ approver_full_name }} \u0e41\u0e25\u0e30\u0e21\u0e35\u0e1c\u0e39\u0e49\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e25\u0e33\u0e14\u0e31\u0e1a\u0e16\u0e31\u0e14\u0e44\u0e1b\u0e42\u0e14\u0e22 {{ next_approver_full_name }}
+                \u0e01\u0e23\u0e38\u0e13\u0e32\u0e04\u0e25\u0e34\u0e4a\u0e01\u0e17\u0e35\u0e48\u0e19\u0e35\u0e48\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e1a\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e04\u0e33\u0e23\u0e49\u0e2d\u0e07\u0e02\u0e2d</p>
+            <p><a href=\"{{ ticket_url }}\">{{ ticket_url }}</a></p>
+        </div>
+        </body>
+        </html>"

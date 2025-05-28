@@ -1,0 +1,15 @@
+- model: projects.datacenterlevel
+  pk: 1
+  fields:
+    data_center: 1
+    level: 1
+- model: projects.datacenterlevel
+  pk: 2
+  fields:
+    data_center: 1
+    level: 2
+- model: projects.datacenterlevel
+  pk: 3
+  fields:
+    data_center: 3
+    level: 1

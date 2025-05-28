@@ -1,0 +1,131 @@
+- model: user_domain.userdomain
+  pk: 2
+  fields:
+    name: ptt
+    endpoint: http://localhost:8003/api/
+    display_name: PTT
+    server_uri: ldap://ldap.ptt.corp:389
+    start_tls: false
+    bind_dn: CN=svcinfrawebrequest,OU=Web Request form,OU=PTT Appl Account,DC=ptt,DC=corp
+    bind_password: CHANGEME
+    user_search_base_dn: DC=ptt,DC=corp
+    user_search_filter_str: (sAMAccountName=%(user)s)
+    allow_change_ldap_password: true
+    group_search_base_dn: OU=Web Request form,OU=PTT Appl Account,DC=ptt,DC=corp
+    group_map:
+      G-PTT InfraWebRequest Requester: requestor
+    group_search_filter_str: (objectClass=group)
+    default_group: unknown
+    mirror_groups_except: '["approver"]'
+    user_attr_map:
+      company: company
+      department: department
+      email: mail
+      first_name: givenName
+      last_name: sn
+      mobile: mobile
+      organization: o
+      telephone: telephone
+      username: sAMAccountName
+    flags_by_group:
+      is_staff: CN=G-PDS InfraWebRequest SysAdmin,OU=Web Request form,OU=Other Accounts,DC=pttdigital,DC=corp
+    approver_search_filter_str: (mail=%(user)s)
+- model: user_domain.userdomain
+  pk: 3
+  fields:
+    name: pttdigital
+    endpoint: http://localhost:8002/api/
+    display_name: PTT Digital
+    server_uri: ldap://ldap.pttdigital.corp:389
+    start_tls: false
+    bind_dn: cn=svccloudweb,ou=PTT Digital Appl Accounts,dc=pttdigital,dc=corp
+    bind_password: CHANGEME
+    user_search_base_dn: DC=pttdigital,DC=corp
+    user_search_filter_str: (sAMAccountName=%(user)s)
+    allow_change_ldap_password: true
+    group_search_base_dn: DC=pttdigital,DC=corp
+    group_map:
+      G-PDS InfraWebRequest CloudAdmin: cloudadmin
+      G-PDS InfraWebRequest Operator: operator
+      G-PDS InfraWebRequest Requester: requestor
+      G-PDS InfraWebRequest SysAdmin: systemadmin
+    group_search_filter_str: (objectClass=group)
+    default_group: unknown
+    mirror_groups_except: '["approver"]'
+    user_attr_map:
+      company: company
+      department: department
+      email: mail
+      first_name: givenName
+      last_name: sn
+      mobile: mobile
+      organization: o
+      telephone: telephone
+      username: sAMAccountName
+    flags_by_group:
+      is_staff: CN=G-PDS InfraWebRequest SysAdmin,OU=Web Request form,OU=Other Accounts,DC=pttdigital,DC=corp
+    approver_search_filter_str: (mail=%(user)s)
+- model: user_domain.userdomain
+  pk: 4
+  fields:
+    name: pttgrp
+    endpoint: http://localhost:8004/api/
+    display_name: PTT GRP
+    server_uri: ldap://ldap.pttgrp.corp:389
+    start_tls: false
+    bind_dn: CN=svcinfrawebrequest,OU=Web Request Form,OU=PTTGRP Appl Accounts,DC=pttgrp,DC=corp
+    bind_password: CHANGEME
+    user_search_base_dn: DC=pttgrp,DC=corp
+    user_search_filter_str: (sAMAccountName=%(user)s)
+    allow_change_ldap_password: true
+    group_search_base_dn: OU=Web Request Form,OU=PTTGRP Appl Accounts,DC=pttgrp,DC=corp
+    group_map:
+      G-PTTGRP InfraWebRequest Requester: requestor
+    group_search_filter_str: (objectClass=group)
+    default_group: unknown
+    mirror_groups_except: '["approver"]'
+    user_attr_map:
+      company: company
+      department: department
+      email: mail
+      first_name: givenName
+      last_name: sn
+      mobile: mobile
+      organization: o
+      telephone: telephone
+      username: sAMAccountName
+    flags_by_group:
+      is_staff: CN=G-PDS InfraWebRequest SysAdmin,OU=Web Request form,OU=Other Accounts,DC=pttdigital,DC=corp
+    approver_search_filter_str: (mail=%(user)s)
+- model: user_domain.userdomain
+  pk: 5
+  fields:
+    name: pttep
+    endpoint: http://localhost:8005/api/
+    display_name: PTT EP
+    server_uri: ldap://ldap.pttep.com:389
+    start_tls: false
+    bind_dn: CN=Admin-LDAP2,OU=Admins,OU=Special Users,OU=Users and groups,OU=PTTEP,DC=pttep,DC=com
+    bind_password: CHANGEME
+    user_search_base_dn: DC=pttep,DC=com
+    user_search_filter_str: (sAMAccountName=%(user)s)
+    allow_change_ldap_password: false
+    group_search_base_dn: OU=Software Group,OU=Groups,OU=Users and groups,OU=PTTEP,DC=pttep,DC=com
+    group_map:
+      PTTEP Cloud Web Requester: requestor
+    group_search_filter_str: (objectClass=group)
+    default_group: unknown
+    mirror_groups_except: '["approver"]'
+    user_attr_map:
+      company: company
+      department: department
+      email: mail
+      first_name: givenName
+      last_name: sn
+      mobile: mobile
+      organization: o
+      telephone: telephone
+      username: sAMAccountName
+    flags_by_group:
+      is_staff: CN=G-PDS InfraWebRequest SysAdmin,OU=Web Request form,OU=Other Accounts,DC=pttdigital,DC=corp
+    approver_search_filter_str: (mail=%(user)s)

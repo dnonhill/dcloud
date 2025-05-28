@@ -1,0 +1,31 @@
+- model: tickets.approvement
+  pk: 1
+  fields:
+    approver: 101
+    ticket: 1
+    reason: null
+    is_approved: null
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    approved_at: null
+    approver_level: 1
+
+- model: tickets.approvement
+  pk: 2
+  fields:
+    approver: 101
+    ticket: 2
+    reason: null
+    is_approved: true
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    approved_at: 2019-09-10 09:00:30.548737+00:00
+
+- model: tickets.approvement
+  pk: 3
+  fields:
+    approver: 101
+    ticket: 4
+    reason: null
+    is_approved: true
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    approved_at: 2019-09-10 09:00:30.548737+00:00
+    approver_level: 1

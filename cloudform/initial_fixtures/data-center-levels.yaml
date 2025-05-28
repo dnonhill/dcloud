@@ -1,0 +1,75 @@
+- model: projects.datacenterlevel
+  pk: 1
+  fields:
+    data_center: 1
+    level: 1
+- model: projects.datacenterlevel
+  pk: 3
+  fields:
+    data_center: 2
+    level: 1
+- model: projects.datacenterlevel
+  pk: 4
+  fields:
+    data_center: 3
+    level: 1
+- model: projects.datacenterlevel
+  pk: 5
+  fields:
+    data_center: 4
+    level: 1
+- model: projects.datacenterlevel
+  pk: 6
+  fields:
+    data_center: 5
+    level: 1
+- model: projects.datacenterlevel
+  pk: 7
+  fields:
+    data_center: 6
+    level: 1
+- model: projects.datacenterlevel
+  pk: 8
+  fields:
+    data_center: 7
+    level: 1
+- model: projects.datacenterlevel
+  pk: 9
+  fields:
+    data_center: 8
+    level: 1
+- model: projects.datacenterlevel
+  pk: 10
+  fields:
+    data_center: 9
+    level: 1
+- model: projects.datacenterlevel
+  pk: 11
+  fields:
+    data_center: 10
+    level: 1
+- model: projects.datacenterlevel
+  pk: 12
+  fields:
+    data_center: 11
+    level: 1
+- model: projects.datacenterlevel
+  pk: 13
+  fields:
+    data_center: 12
+    level: 1
+- model: projects.datacenterlevel
+  pk: 14
+  fields:
+    data_center: 13
+    level: 1
+- model: projects.datacenterlevel
+  pk: 15
+  fields:
+    data_center: 14
+    level: 1
+- model: projects.datacenterlevel
+  pk: 16
+  fields:
+    data_center: 15
+    level: 1

@@ -1,0 +1,23 @@
+<html>
+<body>
+<div>
+    <p>Dear {{ requestor_full_name }}</p>
+    <p>Ticket {{ ticket_no }} has been rejected by {{ reviewer_full_name }}</p>
+    <p>
+        The reason to reject is:<br/>
+        <pre>{{ review_note }}</pre>
+    </p>
+    <p>Please click here to view the detail <a href="{{ review_url }}">{{ review_url }}</a></p>
+</div>
+<br/><br/>
+<div>
+    <p>เรียน {{ requestor_full_name }}</p>
+    <p>คำร้องขอเลขที่ {{ ticket_no }} ถูกปฏิเสธ</p>
+    <p>
+        เนื่องจาก:<br/>
+        <pre>{{ review_note }}</pre>
+    </p>
+    <p>กรุณาคลิ๊กที่นี่เพื่อตรวจสอบรายละเอียด <a href="{{ review_url }}">{{ review_url }}</a></p>
+</div>
+</body>
+</html>

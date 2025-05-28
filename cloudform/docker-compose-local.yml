@@ -1,0 +1,119 @@
+services:
+  dcloud-api:
+    stdin_open: true
+    tty: true
+    container_name: dcloud-api
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    environment:
+      # AWX
+      AWX_API_HOST: ${AWX_API_HOST}
+      AWX_API_HOOK_SECRET: ${AWX_API_HOOK_SECRET}
+      AWX_API_KEY: ${AWX_API_KEY}
+      # Database
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      # Celery
+      CELERY_PASSWORD: ${CELERY_PASSWORD}
+      CELERY_USERNAME: ${CELERY_USERNAME}
+      # vCenter
+      VCENTER_URL: ${VCENTER_URL}
+      VCENTER_USERNAME: ${VCENTER_USERNAME}
+      VCENTER_PASSWORD: ${VCENTER_PASSWORD}
+      # Cache
+      ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
+      ELASTICSEARCH_PORT: ${ELASTICSEARCH_PORT}
+      REDIS_URL: ${REDIS_URL}
+      # LDAP
+      AUTH_LDAP_ENABLED: ${AUTH_LDAP_ENABLED}
+      # Etc
+      TZ: ${TZ}
+      DEBUG_MODE: ${DEBUG_MODE}
+      DCLOUD_FORCE_SECURE_REQUEST: ${DCLOUD_FORCE_SECURE_REQUEST}
+      DCLOUD_APPLICATION_MODE: ${DCLOUD_APPLICATION_MODE}
+    command: bash -c "chmod +x startup-scripts/entrypoint.uat.sh && startup-scripts/entrypoint.uat.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dcloud-db
+    networks:
+      - dcloud
+
+  dcloud-web:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile.local
+    container_name: dcloud-web
+    image: dcloud-web
+    restart: unless-stopped
+    command: yarn start
+    volumes:
+      - "./frontend:/home/node/app"
+      - "/home/node/app/node_modules"
+    ports:
+      - 3000:3000
+    networks:
+      - dcloud
+
+  dcloud-db:
+    container_name: dcloud-db
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/data/postgres
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    networks:
+      - dcloud
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    container_name: es01
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=admin
+    ports:
+      - 9200:9200
+    networks:
+      - dcloud
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - dcloud
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_PASSWORD=admin
+    ports:
+      - 5601:5601
+    depends_on:
+      - es01
+    links:
+      - es01
+    networks:
+      - dcloud
+
+volumes:
+  postgres:
+  db_data:
+
+networks:
+  dcloud:
+    name: dcloud

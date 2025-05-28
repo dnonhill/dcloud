@@ -1,0 +1,110 @@
+- model: tickets.approver
+  pk: 3
+  fields:
+    user: 1001
+    data_center_levels: [
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ]
+- model: tickets.approver
+  pk: 4
+  fields:
+    user: 2001
+    data_center_levels: [
+      1,
+      3,
+      7
+     ]
+- model: tickets.approver
+  pk: 5
+  fields:
+    user: 2008
+    data_center_levels: [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ]
+- model: tickets.approver
+  pk: 6
+  fields:
+    user: 2036
+    data_center_levels: [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+- model: tickets.approver
+  pk: 7
+  fields:
+    user: 2037
+    data_center_levels: [
+      5,
+      15
+     ]
+- model: tickets.approver
+  pk: 8
+  fields:
+    user: 2017
+    data_center_levels: [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+- model: tickets.approver
+  pk: 9
+  fields:
+    user: 2021
+    data_center_levels: [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]

@@ -1,0 +1,97 @@
+- model: pricing.pricesetting
+  pk: 1
+  fields:
+    description: rate_vm_vcpu
+    resource_type: vm
+    matching_attrs:
+      cpu: null
+    effect_attrs: '["cpu"]'
+    unit_price: '17.4120'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 2
+  fields:
+    description: rate_vm_memory
+    resource_type: vm
+    matching_attrs:
+      memory: null
+    effect_attrs: '["memory"]'
+    unit_price: '11.1780'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 3
+  fields:
+    description: rate_vm_vmdk_platinum_p1
+    resource_type: vm
+    matching_attrs:
+      protection_level: p1
+      storage_tier: platinum
+    effect_attrs: '["os_dist", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.6242'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 4
+  fields:
+    description: rate_vm_vmdk_platinum_p2
+    resource_type: vm
+    matching_attrs:
+      protection_level: p2
+      storage_tier: platinum
+    effect_attrs: '["os_dist", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.5941'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 5
+  fields:
+    description: rate_vm_vmdk_platinum_p3
+    resource_type: vm
+    matching_attrs:
+      protection_level: p3
+      storage_tier: platinum
+    effect_attrs: '["os_dist", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.5667'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 6
+  fields:
+    description: rate_vm_vmdk_platinum_p4
+    resource_type: vm
+    matching_attrs:
+      protection_level: p4
+      storage_tier: platinum
+    effect_attrs: '["os_dist", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.2300'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 8
+  fields:
+    description: rate_vm_antivirus
+    resource_type: vm
+    matching_attrs: null
+    effect_attrs: '[]'
+    unit_price: '7.7208'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 9
+  fields:
+    description: rate_vm_vcpu_DR_prem
+    resource_type: vm
+    matching_attrs:
+      protection_level:
+      - p1
+      - p2
+    effect_attrs: '["cpu"]'
+    unit_price: '5.2236'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 10
+  fields:
+    description: rate_vm_windows
+    resource_type: vm
+    matching_attrs:
+      operating_system:
+      - Windows 2018
+      - Windows 2016
+    effect_attrs: '[]'
+    unit_price: '21.6840'
+    effective_date: 2020-11-23 08:00:00.684203+00:00

@@ -1,0 +1,105 @@
+- model: projects.datacenter
+  pk: 1
+  fields:
+    name: "PTT"
+    default_job_code: "000000000000"
+    tenant: "ptt"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 2
+  fields:
+    name: "PTT Azure External zone"
+    default_job_code: "000000000000"
+    tenant: "ptt_azure_ext"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 3
+  fields:
+    name: "PTT Azure PTT zone"
+    default_job_code: "000000000000"
+    tenant: "ptt_azure"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 4
+  fields:
+    name: "PTTEP"
+    default_job_code: null
+    tenant: "pttep_pttep"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 5
+  fields:
+    name: "PTTDIGITAL Openshift Non-Production"
+    default_job_code: null
+    tenant: "nonproduction"
+    available_resources: '["container-cluster", "other"]'
+- model: projects.datacenter
+  pk: 6
+  fields:
+    name: "PTTDIGITAL Cloud - PTTDIGITAL"
+    default_job_code: null
+    tenant: "pds"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 7
+  fields:
+    name: "PTTDIGITAL Cloud - GPSC"
+    default_job_code: null
+    tenant: "gpsc"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 8
+  fields:
+    name: "PTTDIGITAL Cloud - ThaiOil"
+    default_job_code: null
+    tenant: "thaioil"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 9
+  fields:
+    name: "PTTDIGITAL Cloud - PTTGRP"
+    default_job_code: null
+    tenant: "pttgrp"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 10
+  fields:
+    name: "PTTDIGITAL Cloud - PTTNGD"
+    default_job_code: null
+    tenant: "pttngd"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 11
+  fields:
+    name: "PTTDIGITAL Cloud - PTTGC"
+    default_job_code: null
+    tenant: "pttgc"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 12
+  fields:
+    name: "PTTDIGITAL Cloud - PTTPLC"
+    default_job_code: "901482000244"
+    tenant: "ptt"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 13
+  fields:
+    name: "PTTDIGITAL Cloud - SNAPLOGIS"
+    default_job_code: null
+    tenant: "snaplogic"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 14
+  fields:
+    name: "PTTDIGITAL Cloud - PTTEP"
+    default_job_code: "901482000326"
+    tenant: "pttep"
+    available_resources: '["vm", "other"]'
+- model: projects.datacenter
+  pk: 15
+  fields:
+    name: "PTTDIGITAL Openshift Production"
+    default_job_code: null
+    tenant: "production"
+    available_resources: '["container-cluster", "other"]'

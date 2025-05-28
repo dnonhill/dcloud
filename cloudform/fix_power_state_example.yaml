@@ -1,0 +1,31 @@
+# Range of days for which elasticsearch documents needs to be edited.
+date_between:
+  start: "2024-05-02"
+  end: "2024-05-02"
+
+# List of machines that want to edit.
+datacenter: ThaiOil
+app_list:
+  - TBKC-RPA-RUN
+  - TBKC-RPA-CTRL
+  - TBKC-DVIM-WEB
+  - TBKC-DVIM-ORADB
+  - TBKC-DVIM-OCR
+  - TBKC-DVIM-BCC
+  - TBKC-DTOPBOT-APP
+  - TBKC-DSQLDB-05
+  - TBKC-DSP-WF2
+  - TBKC-DSP-SH1
+  - TBKC-DSP-OOS
+  - TBKC-DSP-MWF
+  - TBKC-DSP-MDB
+  - TBKC-DSP-DB2
+  - TBKC-DSP-DB1
+  - TBKC-DSP-BWF
+  - TBKC-DSP-BOS
+  - TBKC-DSP-BDB
+  - TBKC-DSP-AP1
+  - TBKC-DORADB-05
+  - TBKC-DHIS-DB
+  - TBKC-DGOOGLE-SH
+  - TBKC-DAPPS-05

@@ -1,0 +1,463 @@
+- model: pricing.pricesetting
+  pk: 1
+  fields:
+    description: rate_vm_windows
+    resource_type: vm
+    matching_attrs:
+      os_type: windows
+    effect_attrs: '[]'
+    unit_price: '0.9035'
+    category: 2
+    display: 'OS: Windows'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 2
+  fields:
+    description: rate_vm_rh_linux
+    resource_type: vm
+    matching_attrs:
+      os_type: linux
+      distro: redhat
+    effect_attrs: '[]'
+    unit_price: '0.3559'
+    category: 2
+    display: 'OS: Redhat Linux'
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 3
+  fields:
+    description: rate_vm_memory
+    resource_type: vm
+    matching_attrs:
+      memory: null
+    effect_attrs: '["memory"]'
+    unit_price: '0.4860'
+    category: 1
+    display: Memory
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 4
+  fields:
+    description: rate_vm_vcpu
+    resource_type: vm
+    matching_attrs:
+      cpu: null
+    effect_attrs: '["cpu"]'
+    unit_price: '0.7255'
+    category: 1
+    display: vCPU
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 5
+  fields:
+    description: rate_vm_antivirus
+    resource_type: vm
+    matching_attrs: null
+    effect_attrs: '[]'
+    unit_price: '0.3217'
+    category: 2
+    display: Antivirus
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 6
+  fields:
+    description: rate_vm_vmdk_platinum_p1
+    resource_type: vm
+    matching_attrs:
+      protection_level: p1
+      storage_tier: '4_platinum'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0260'
+    category: 1
+    display: Disk - Platinum P1
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 7
+  fields:
+    description: rate_vm_vmdk_platinum_p2
+    resource_type: vm
+    matching_attrs:
+      protection_level: p2
+      storage_tier: '4_platinum'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0246'
+    category: 1
+    display: Disk - Platinum P2
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 8
+  fields:
+    description: rate_vm_vmdk_platinum_p3
+    resource_type: vm
+    matching_attrs:
+      protection_level: p3
+      storage_tier: '4_platinum'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0236'
+    category: 1
+    display: Disk - Platinum P3
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 9
+  fields:
+    description: rate_vm_vmdk_platinum_p4
+    resource_type: vm
+    matching_attrs:
+      protection_level: p4
+      storage_tier: '4_platinum'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0096'
+    category: 1
+    display: Disk - Platinum P4
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 10
+  fields:
+    description: rate_vm_vmdk_gold_p1
+    resource_type: vm
+    matching_attrs:
+      protection_level: p1
+      storage_tier: '3_gold'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0202'
+    category: 1
+    display: Disk - Gold P1
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 11
+  fields:
+    description: rate_vm_vmdk_gold_p2
+    resource_type: vm
+    matching_attrs:
+      protection_level: p2
+      storage_tier: '3_gold'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0188'
+    category: 1
+    display: Disk - Gold P2
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 12
+  fields:
+    description: rate_vm_vmdk_gold_p3
+    resource_type: vm
+    matching_attrs:
+      protection_level: p3
+      storage_tier: '3_gold'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0178'
+    category: 1
+    display: Disk - Gold P3
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 13
+  fields:
+    description: rate_vm_vmdk_gold_p4
+    resource_type: vm
+    matching_attrs:
+      protection_level: p4
+      storage_tier: '3_gold'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0072'
+    category: 1
+    display: Disk - Gold P4
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 14
+  fields:
+    description: rate_vm_vmdk_silver_p1
+    resource_type: vm
+    matching_attrs:
+      protection_level: p1
+      storage_tier: '2_silver'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0140'
+    category: 1
+    display: Disk - Silver P1
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 15
+  fields:
+    description: rate_vm_vmdk_silver_p2
+    resource_type: vm
+    matching_attrs:
+      protection_level: p2
+      storage_tier: '2_silver'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0130'
+    category: 1
+    display: Disk - Silver P2
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 16
+  fields:
+    description: rate_vm_vmdk_silver_p3
+    resource_type: vm
+    matching_attrs:
+      protection_level: p3
+      storage_tier: '2_silver'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0120'
+    category: 1
+    display: Disk - Silver P3
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 17
+  fields:
+    description: rate_vm_vmdk_silver_p4
+    resource_type: vm
+    matching_attrs:
+      protection_level: p4
+      storage_tier: '2_silver'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0048'
+    category: 1
+    display: Disk - Silver P4
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 18
+  fields:
+    description: rate_vm_vmdk_bronze_p1
+    resource_type: vm
+    matching_attrs:
+      protection_level: p1
+      storage_tier: '1_bronze'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0034'
+    category: 1
+    display: Disk - Bronze P1
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 19
+  fields:
+    description: rate_vm_vmdk_bronze_p2
+    resource_type: vm
+    matching_attrs:
+      protection_level: p2
+      storage_tier: '1_bronze'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0031'
+    category: 1
+    display: Disk - Bronze P2
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 20
+  fields:
+    description: rate_vm_vmdk_bronze_p3
+    resource_type: vm
+    matching_attrs:
+      protection_level: p3
+      storage_tier: '1_bronze'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0024'
+    category: 1
+    display: Disk - Bronze P3
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 21
+  fields:
+    description: rate_vm_vmdk_bronze_p4
+    resource_type: vm
+    matching_attrs:
+      protection_level: p4
+      storage_tier: '1_bronze'
+    effect_attrs: '["os_disk", "data_disk_1_size", "data_disk_2_size", "additional_os_disk"]'
+    unit_price: '0.0010'
+    category: 1
+    display: Disk - Bronze P4
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 22
+  fields:
+    description: rate_openshift_vcpu
+    resource_type: container-cluster
+    matching_attrs:
+      cpu: null
+    effect_attrs: '["cpu"]'
+    unit_price: '0.7255'
+    category: 1
+    display: Openshift - vCPU
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 23
+  fields:
+    description: rate_openshift_memory
+    resource_type: container-cluster
+    matching_attrs:
+      memory: null
+    effect_attrs: '["memory"]'
+    unit_price: '0.4860'
+    category: 1
+    display: Openshift - Memory
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 24
+  fields:
+    description: rate_openshift_main_storage
+    resource_type: container-cluster
+    matching_attrs:
+      mainStorage: null
+    effect_attrs: '["mainStorage"]'
+    unit_price: '0.0048'
+    category: 1
+    display: Openshift - Main Storage
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 25
+  fields:
+    description: rate_openshift_snapshot_storage
+    resource_type: container-cluster
+    matching_attrs:
+      mainStorage: null
+    effect_attrs: '["mainStorage"]'
+    unit_price: '0.0010'
+    category: 1
+    display: Openshift - Snapshot Storage
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 26
+  fields:
+    description: rate_vm_managed_service_24x7
+    resource_type: vm
+    matching_attrs:
+      add_on_service: managed_service
+    effect_attrs: '[]'
+    unit_price: '10.4167'
+    category: 4
+    display: Managed Service
+    effective_date: 2020-11-23 08:00:00.684203+00:00
+- model: pricing.pricesetting
+  pk: 27
+  fields:
+    description: rate_vm_memory_dr_prem
+    resource_type: vm
+    matching_attrs:
+      protection_level:
+      - p0
+      - p1
+      - p2
+      - p3
+    effect_attrs: '["memory"]'
+    unit_price: '0.1312'
+    category: 1
+    display: Memory (DR)
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 28
+  fields:
+    description: rate_vm_cpu_dr_prem
+    resource_type: vm
+    matching_attrs:
+      protection_level:
+      - p0
+      - p1
+      - p2
+      - p3
+    effect_attrs: '["cpu"]'
+    unit_price: '0.1959'
+    category: 1
+    display: CPU (DR)
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 29
+  fields:
+    description: rate_vm_siem_log
+    resource_type: vm
+    matching_attrs:
+      add_on_service: log_analyst_service
+    effect_attrs: '[]'
+    unit_price: '1.152916667'
+    category: 4
+    display: Log Analysis Service
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 30
+  fields:
+    description: rate_vm_va_scan
+    resource_type: vm
+    matching_attrs:
+      add_on_service: va_scan_service
+    effect_attrs: '[]'
+    unit_price: '0.555416667'
+    category: 4
+    display: VA Scan Service
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 31
+  fields:
+    description: rate_vm_monitor_service
+    resource_type: vm
+    matching_attrs:
+      add_on_service: monitor_scan
+    effect_attrs: '[]'
+    unit_price: '1.26375'
+    category: 4
+    display: Monitor Service
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 32
+  fields:
+    description: rate_vm_sql_server
+    resource_type: vm
+    matching_attrs:
+      database.engine:
+      - Microsoft SQL Server 2016
+      - Microsoft SQL Server 2017
+      - Microsoft SQL Server 2019
+    effect_attrs: '["cpu"]'
+    unit_price: '1.166666667'
+    category: 2
+    display: SQL Server
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 33
+  fields:
+    description: rate_vm_vmdk_bronze_p0
+    resource_type: vm
+    matching_attrs:
+      protection_level: p0
+      storage_tier: '1_bronze'
+    effect_attrs: '["os_disk", "additional_os_disk", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.00375'
+    category: 1
+    display: Disk
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 34
+  fields:
+    description: rate_vm_vmdk_silver_p0
+    resource_type: vm
+    matching_attrs:
+      protection_level: p0
+      storage_tier: '2_silver'
+    effect_attrs: '["os_disk", "additional_os_disk", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.01375'
+    category: 1
+    display: Disk
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 35
+  fields:
+    description: rate_vm_vmdk_gold_p0
+    resource_type: vm
+    matching_attrs:
+      protection_level: p0
+      storage_tier: '3_gold'
+    effect_attrs: '["os_disk", "additional_os_disk", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.019375'
+    category: 1
+    display: Disk
+    effective_date: 2020-12-29 10:53:54.222653+00:00
+- model: pricing.pricesetting
+  pk: 36
+  fields:
+    description: rate_vm_vmdk_platinum_p0
+    resource_type: vm
+    matching_attrs:
+      protection_level: p0
+      storage_tier: '4_platinum'
+    effect_attrs: '["os_disk", "additional_os_disk", "data_disk_1_size", "data_disk_2_size"]'
+    unit_price: '0.025'
+    category: 1
+    display: Disk
+    effective_date: 2020-12-29 10:53:54.222653+00:00

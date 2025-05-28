@@ -1,0 +1,76 @@
+
+## Setup Project
+### activate python environment 
+````
+source activate <environment_name>
+````
+or (in case that you use Anaconda distribution)
+````
+conda activate <environment_name>
+````
+
+### start postgres database 
+````
+docker run \
+-d \
+--name postgres \
+-p 5432:5432 \
+-v `pwd`/postgres:/var/lib/postgresql/data \
+-e POSTGRES_DB=cloudform \
+-e POSTGRES_PASSWORD=password \
+postgres:11.4
+````
+
+### start celery
+````
+docker run -d -p 6379:6379 redis
+
+cd dcloud/cloudform
+
+celery -A cloudform beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+
+celery -A cloudform worker --loglevel=INFO
+
+flower -A cloudform --port=5555
+````
+
+
+### install dependencies
+````
+pip install -r requirements.txt
+````
+
+
+---
+
+
+## DB Migration
+
+### change directory to service directory
+````
+cd service
+````
+
+### create database migration files
+````
+./manage.py makemigrations
+````
+
+### run database migration
+````
+./manage.py migrate
+````
+
+---
+
+## Run 
+
+### create superuser
+````
+./manage.py createsuperuser --username admin
+````
+
+### run server
+````
+./manage.py runserver
+````

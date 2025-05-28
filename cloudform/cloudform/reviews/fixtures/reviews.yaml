@@ -1,0 +1,43 @@
+- model: reviews.review
+  pk: 1
+  fields:
+    reviewer: null
+    ticket: 1
+    note: null
+    is_reviewed: false
+    is_reject: null
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    reviewed_at: null
+
+- model: reviews.review
+  pk: 2
+  fields:
+    reviewer: null
+    ticket: 1
+    note: null
+    is_reviewed: true
+    is_reject: null
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    reviewed_at: null
+
+- model: reviews.review
+  pk: 3
+  fields:
+    reviewer: null
+    ticket: 34
+    note: null
+    is_reviewed: false
+    is_reject: null
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    reviewed_at: null
+
+- model: reviews.review
+  pk: 4
+  fields:
+    reviewer: null
+    ticket: 35
+    note: 'test-comment'
+    is_reviewed: false
+    is_reject: null
+    requested_at: 2019-09-09 04:00:26.548737+00:00
+    reviewed_at: 2019-09-09 04:00:26.548737+00:00
